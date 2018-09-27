@@ -1,0 +1,24 @@
+" ------------------------------------
+" for Only Kaoriya Vim Setting
+" ------------------------------------
+
+" Strange Character
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_jp.utf-8
+source $VIMRUNTIME/menu.vim
+
+" ツールバーを削除
+set guioptions-=T
+
+"メニューを削除
+set guioptions-=m
+
+" 縦幅デフォルトは24
+set lines=65
+
+" 横幅デフォルトは80
+set columns=160
+set guifont=Myrica_M_for_Powerline:h10:cANSI:qDRAFT
+
+colorscheme molokai
+

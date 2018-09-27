@@ -1,0 +1,77 @@
+# To the extent possible under law, the author(s) have dedicated all
+# copyright and related and neighboring rights to this software to the
+# public domain worldwide. This software is distributed without any warranty.
+# You should have received a copy of the CC0 Public Domain Dedication along
+# with this software.
+# If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+
+# ~/.bash_profile: executed by bash(1) for login shells.
+
+# The copy in your home directory (~/.bash_profile) is yours, please
+# feel free to customise it to create a shell
+# environment to your liking.  If you feel a change
+# would be benifitial to all, please feel free to send
+# a patch to the msys2 mailing list.
+
+# User dependent .bash_profile file
+
+# source the users bashrc if it exists
+if [ -f "${HOME}/.bashrc" ] ; then
+  source "${HOME}/.bashrc"
+fi
+
+
+if [ "$(uname)" = 'Darwin' ]; then
+    export LSCOLORS=xbfxcxdxbxegedabagacad
+    alias ls='ls -G'
+else
+    #eval `dircolors ~/.colorrc`
+    alias ls='ls --color=auto -F'
+fi
+
+export PATH=$PATH:/c/tools/bin
+
+
+export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/
+export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
+
+alias python="winpty python"
+alias ipython="winpty ipython"
+
+# Set PATH so it includes user's private bin if it exists
+# if [ -d "${HOME}/bin" ] ; then
+#   PATH="${HOME}/bin:${PATH}"
+# fi
+
+# Set MANPATH so it includes users' private man if it exists
+# if [ -d "${HOME}/man" ]; then
+#   MANPATH="${HOME}/man:${MANPATH}"
+# fi
+
+# Set INFOPATH so it includes users' private info if it exists
+# if [ -d "${HOME}/info" ]; then
+#   INFOPATH="${HOME}/info:${INFOPATH}"
+# fi
+
+#echo -ne '\e]10;#A0A0A0\a'
+#echo -ne '\e]11;#1B1D1E\a'
+#echo -ne '\e]12;#A0A0A0\a'
+#echo -ne '\e]4;0;#1B1D1E\a'
+#echo -ne '\e]4;1;#F92672\a'
+#echo -ne '\e]4;2;#82B414\a'
+#echo -ne '\e]4;3;#FD971F\a'
+#echo -ne '\e]4;4;#268BD2\a'
+#echo -ne '\e]4;5;#8C54FE\a'
+#echo -ne '\e]4;6;#56C2D6\a'
+#echo -ne '\e]4;7;#CCCCC6\a'
+#echo -ne '\e]4;9;#FF5995\a'
+#echo -ne '\e]4;8;#505354\a'
+#echo -ne '\e]4;10;#B7EB46\a'
+#echo -ne '\e]4;11;#FEED6C\a'
+#echo -ne '\e]4;12;#62ADE3\a'
+#echo -ne '\e]4;13;#BFA0FE\a'
+#echo -ne '\e]4;14;#94D8E5\a'
+#echo -ne '\e]4;15;#F8F8F2\a'
+
+
+
