@@ -29,7 +29,7 @@ else
     alias ls='ls --color=auto -F'
 fi
 
-export PATH=$PATH:/c/tools/bin
+export PATH=$PATH:/c/tools/bin:~/bin
 
 
 export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/

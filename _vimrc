@@ -64,6 +64,22 @@ NeoBundle 'scwood/vim-hybrid'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'chriskempson/base16-vim'
 
+
+"
+" vim-clang
+"
+" http://engineerspirit.com/2017/02/21/post-830/
+" https://qiita.com/koara-local/items/815b08ff5c6673d8a5c6
+"
+NeoBundle 'justmao945/vim-clang'
+
+"
+"" Insert the function header formatted Doxygen
+"
+" https://myenigma.hatenablog.com/entry/2016/01/10/215846
+"
+NeoBundle 'vim-scripts/DoxygenToolkit.vim'
+
 " for PowerLine
 "NeoBundle 'https://github.com/powerline/powerline.git', { 'rtp' : 'powerline/bindings/vim'}
 
@@ -120,6 +136,23 @@ function! LightLineFugitive()
   endif
   return ''
 endfunction
+
+" ------------------------------------
+" For tmux color Setting
+" ------------------------------------
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" ------------------------------------
+" For vim-clang Setting
+" ------------------------------------
+
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ ?pedantic-errors'
+let g:clang_format_auto = 1
+let g:clang_format_style = 'Google'
+let g:clang_check_syntax_auto = 1
 
 " ------------------------------------
 " For Common Setting
@@ -307,7 +340,9 @@ nnoremap <S-j> }
 nnoremap <S-k> {
 nnoremap <S-l> $
 
+"
 "" original key setting
+"
 nnoremap wh <C-w>h
 nnoremap wj <C-w>j
 nnoremap wk <C-w>k
@@ -332,7 +367,16 @@ nnoremap sh :sp<CR>
 nnoremap sv :vsp<CR>
 
 
+" auto select function
+nnoremap vf ][v[[?^?s*$<CR>
+
+" auto select block like for
+nnoremap vb /{<CR>%v%0
+
+"
+"
 "buffer operations
+"
 nnoremap <silent> bp :bprevious<CR>
 nnoremap <silent> bn :bnext<CR>
 
