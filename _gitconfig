@@ -8,7 +8,7 @@
     br = browse-remote
     ci = commit
     co = checkout
-    d = diff
+    d = difftool
     dc = diff --cached
     di = diff
     dic = diff --cached
@@ -28,9 +28,7 @@
 [credential]
 	helper = manager
 [user]
-	name = eikei54
-    email = kami1030@yahoo.co.jp
-
+	useConfigOnly = true
 [core]
 	safecrlf = warn
 	editor = vim
@@ -40,3 +38,7 @@
 #	cmd = 'C:/Program Files (x86)/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 #	trustExitCode = true
 #
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
