@@ -305,6 +305,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#151515 ctermbg=232
 let g:indent_guides_guide_size=4
 let g:indent_guides_color_change_percent = 100
 
+"------- vim-diff setting
+
+au FilterWritePre * if &diff | colorscheme hybrid | endif
 
 " ------ CtrlP Setting ------------
 
