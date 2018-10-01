@@ -1,3 +1,17 @@
 # operate like Vim
-#bind generic g move-first-line
-#bind generic G move-last-line
+bind generic g      move-first-line
+bind generic G      move-last-line
+bind main    G      move-last-line
+
+# Alg-g :toggle commit-title-graph
+bind main    <Esc>g :toggle commit-title-graph
+
+# Display commit ID in left side
+set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+
+# Display line number in blame view
+#set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
+
+# Enable mouse
+set mouse = true
+
