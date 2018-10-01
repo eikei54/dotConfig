@@ -83,15 +83,16 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 " Vim標準のjやkコマンドによる移動をより速くすること
 NeoBundle 'rhysd/accelerated-jk'
 
+" Easymotion
+NeoBundle 'easymotion/vim-easymotion'
+
 " color scheme
 NeoBundle 'tomasr/molokai'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'joshdick/onedark.vim'
-NeoBundle 'hachy/eva01.vim'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'scwood/vim-hybrid'
 NeoBundle 'aereal/vim-colors-japanesque'
-NeoBundle 'chriskempson/base16-vim'
-
 
 "
 " vim-clang
@@ -196,15 +197,14 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme molokai
 set background=dark
 
+set backspace=indent,eol,start
+
 autocmd GUIEnter * set transparency=249         " set transparency
 
 set shortmess+=I                                " 起動時のメッセージを消す
 
 set number                                      " 行数を表示
 set title
-
-"set list                                        " 不可視文字を表示
-set listchars=tab:»-,trail:-,nbsp:%,eol:↲        " 表示させる（置き換える）文字を設定
 
 "" Visible for Zenkaku Space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
@@ -251,7 +251,6 @@ set mouse-=a
 "hi CursorColumn cterm=NONE ctermbg=Blue ctermfg=black
 
 set t_Co=256
-
 set termguicolors
 
 set cursorline                                   "カレント行のハイライト
@@ -312,9 +311,20 @@ let g:indent_guides_color_change_percent = 100
 let g:ctrlp_regexp = 1
 let g:ctrlp_by_filename = 1
 
+" Use cache feature
+let g:ctrlp_use_caching=1
+
+" Define cache directory
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+
+" Do not delete chache at finishing Vim
+let g:ctrlp_clear_cache_on_exit = 0
+
+" re-draw
 let g:ctrlp_lazy_update = 1
 
+" Define the height at Max
+let g:ctrlp_max_height = 20
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -332,28 +342,28 @@ nnoremap / /\v
 nnoremap ? ?\v
 
 " file open
-nnoremap <Leader>o :CtrlP<CR>
+"nnoremap <Leader>o :CtrlP<CR>
 " file save
-nnoremap <Leader>w :w<CR>
+"nnoremap <Leader>w :w<CR>
 
 " bind s to grep word under cursor
-nnoremap <Leader>f :Ag! "\b<C-R><C-W>\b" ./%<CR>
+"nnoremap <Leader>f :Ag! "\b<C-R><C-W>\b" ./%<CR>
 " bind g to grep word under cursor
-nnoremap <Leader>s :Ag! <C-R><C-W> ./
+"nnoremap <Leader>s :Ag! <C-R><C-W> ./
 
 " <Space>y で改行なしで1行コピー（\n を含まずに yy）
 "noremap <Leader>y 0v$hy
 
 " 最初にヤンクした文字列を繰り返しペースト
-vnoremap <Leader>p "0p
+"vnoremap <Leader>p "0p
 
 " <Space>y で選択行をコピー
-vnoremap <Leader>y "y*
+"vnoremap <Leader>y "y*
 
 set clipboard+=autoselect
 
 " <Leader>i でコードをインデント整形
-map <Leader>i gg=<S-g><C-o><C-o>zz
+"map <Leader>i gg=<S-g><C-o><C-o>zz
 
 " 最後に変更した場所へ戻る(便利)
 map <C-m> `.
@@ -431,14 +441,14 @@ nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
 
-nnoremap <F5>   :CopyCurrentLineNum<CR>
-vnoremap <F5>   :CopyCurrentLineNum<CR>
+nnoremap <F6>   :CopyCurrentLineNum<CR>
+vnoremap <F6>   :CopyCurrentLineNum<CR>
 
-nnoremap <S-F5> :CopyFileName<CR>
-vnoremap <S-F5> :CopyFileName<CR>
+nnoremap <S-F6> :CopyFileName<CR>
+vnoremap <S-F6> :CopyFileName<CR>
 
-nnoremap <C-F5> :CopyFilePath<CR>
-vnoremap <C-F5> :CopyFilePath<CR>
+nnoremap <C-F6> :CopyFilePath<CR>
+vnoremap <C-F6> :CopyFilePath<CR>
 
 nnoremap <S-F7> :cold<CR>
 nnoremap <S-F8> :cnew<CR>
@@ -682,6 +692,7 @@ if executable('ag')
     \ '-i --vimgrep --hidden --ignore ' .
     \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
     let g:unite_source_grep_recursive_opt = ''
+"    let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
 endif
 
 " For Unite vim config
