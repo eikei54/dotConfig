@@ -1,6 +1,34 @@
 ﻿
 "https://github.com/sonatard/color-theme-molokai
 
+let $LANG='ja_JP.UTF-8'
+scriptencoding utf-8
+
+" 改行コードの自動認識
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
+
+"set list                                        " 不可視文字を表示
+" 表示させる（置き換える）文字を設定
+"set listchars=tab:»-,trail:-,nbsp:%,eol:↲
+
+"if has("patch-7.4.710")
+"    "set listchars=eol:~,tab:>.,trail:~,extends:>,precedes:<,space:_
+"    set listchars=eol:~,tab:»-,trail:~,extends:>,precedes:<,space:_
+"else
+"    set listchars=eol:~,tab:»-,trail:~,extends:>,precedes:<
+"endif
+
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
+
+" □とか○の文字があってもカーソル位置がずれないようにする
+if exists('&ambiwidth')
+    set ambiwidth=double
+endif
+
+
 " ------------------------------------
 " For Plugin List
 " ------------------------------------
@@ -280,7 +308,7 @@ let g:indent_guides_color_change_percent = 100
 
 
 " ------ CtrlP Setting ------------
-"nnoremap <C-s> :CtrlP<CR>   "start Ctrlp
+
 let g:ctrlp_regexp = 1
 let g:ctrlp_by_filename = 1
 
@@ -351,6 +379,7 @@ nnoremap wJ <C-w>J
 nnoremap wK <C-w>K
 nnoremap wL <C-w>L
 nnoremap wH <C-w>H
+nnoremap wT <C-w>T
 nnoremap s <Nop>
 nnoremap sn gt
 nnoremap sp gT
@@ -402,12 +431,14 @@ nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
 
-nnoremap <C-F5>   :CopyFilePath<CR>
-vnoremap <C-F5>   :CopyFilePath<CR>
-
 nnoremap <F5>   :CopyCurrentLineNum<CR>
 vnoremap <F5>   :CopyCurrentLineNum<CR>
 
+nnoremap <S-F5> :CopyFileName<CR>
+vnoremap <S-F5> :CopyFileName<CR>
+
+nnoremap <C-F5> :CopyFilePath<CR>
+vnoremap <C-F5> :CopyFilePath<CR>
 
 nnoremap <S-F7> :cold<CR>
 nnoremap <S-F8> :cnew<CR>
@@ -461,6 +492,7 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
+inoremap <C-c> <Esc>
 " delete the part after cursor in the line
 "inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
 
@@ -471,6 +503,8 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <Delete>
 cnoremap <C-j> <Left>
 cnoremap <C-l> <Right>
+cnoremap <A-f> <C-Right>
+cnoremap <A-b> <C-Left>
 " delete the part after cursor in the line
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 "" Default keymap in Vim
@@ -492,21 +526,6 @@ noremap <buffer> p  <CR>zz<C-w>p
 " hook setting to add cw in vimgrep
 autocmd QuickFixCmdPost *grep* cwindow
 
-
-
-let $LANG='ja_JP.UTF-8'
-
-" 改行コードの自動認識
-set encoding=utf-8
-scriptencoding utf-8
-"set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-set fileencoding=utf-8
-set fileformats=unix,dos,mac
-
-" □とか○の文字があってもカーソル位置がずれないようにする
-if exists('&ambiwidth')
-    set ambiwidth=double
-endif
 
 
 " 現在のファイルパスを表示する
@@ -702,7 +721,7 @@ endfunction"}}}
 
 " Copy the path of file being edited into clipboard
 function! g:CopyFilePath()
-  let @* = expand("%:p")
+  let @* = expand("%:p")." L:".line('.')
   echo @*
 endfunction
 
