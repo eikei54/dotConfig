@@ -5,7 +5,7 @@ let $LANG='ja_JP.UTF-8'
 scriptencoding utf-8
 
 " 改行コードの自動認識
-set encoding=utf-8
+
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fileformats=unix,dos,mac
 
@@ -133,7 +133,7 @@ let Tlist_Use_Right_Window = 1
 " ------------------------------------
 
 let g:lightline = {
-      \   'colorscheme': 'Dracula',
+      \   'colorscheme': 'darcula',
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename',] ]
       \   },
