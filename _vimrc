@@ -68,6 +68,9 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 "NeoBundle 'cohama/vim-hier'
 
+" Display only difference part in vimdiff
+NeoBundle 'vim-scripts/diffchar.vim'
+
 " For Python env
 NeoBundle 'davidhalter/jedi-vim'
 
@@ -130,7 +133,10 @@ let Tlist_Use_Right_Window = 1
 " ------------------------------------
 
 let g:lightline = {
-      \   'colorscheme': 'default',
+      \   'colorscheme': 'Dracula',
+      \   'active': {
+      \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename',] ]
+      \   },
       \   'component': {
       \     'lineinfo': '⭡ %3l:%-2v',
       \   },
@@ -156,14 +162,15 @@ let g:lightline = {
 "    \ }
 "
 function! LightLineReadonly()
-  return &readonly ? '⭤' : ''
+    return &readonly ? '⭤' : ''
 endfunction
+
 function! LightLineFugitive()
-  if exists('*fugitive#head')
-  let branch = fugitive#head()
-    return branch !=# '' ? '⭠ '.branch : ''
-  endif
-  return ''
+    if exists('*fugitive#head')
+        let branch = fugitive#head()
+        return branch !=# '' ? '⭠ '.branch : ''
+    endif
+    return ''
 endfunction
 
 " ------------------------------------
