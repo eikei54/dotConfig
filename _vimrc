@@ -133,7 +133,7 @@ let Tlist_Use_Right_Window = 1
 " ------------------------------------
 
 let g:lightline = {
-      \   'colorscheme': 'darcula',
+      \   'colorscheme': 'deus',
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename',] ]
       \   },
