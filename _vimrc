@@ -96,6 +96,7 @@ NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'scwood/vim-hybrid'
 NeoBundle 'aereal/vim-colors-japanesque'
+NeoBundle 'cocopon/iceberg.vim'
 
 "
 " vim-clang
