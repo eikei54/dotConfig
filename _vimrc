@@ -123,6 +123,14 @@ filetype plugin indent on
 " インストールのチェック
 NeoBundleCheck
 
+
+" ------------------------------------
+"  Make vimdiff writeable
+" ------------------------------------
+if &diff
+    set noreadonly
+endif
+
 " ------------------------------------
 " For Taglist
 " ------------------------------------
