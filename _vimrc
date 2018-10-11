@@ -409,7 +409,7 @@ nnoremap wK <C-w>K
 nnoremap wL <C-w>L
 nnoremap wH <C-w>H
 nnoremap wT <C-w>T
-nnoremap s <Nop>
+"nnoremap s <Nop>
 nnoremap sn gt
 nnoremap sp gT
 nnoremap s= <C-w>=
@@ -444,10 +444,10 @@ nnoremap <silent> bn :bnext<CR>
 " nnoremap <S-Right> <C-w>><CR>
 " nnoremap <S-Up>    <C-w>-<CR>
 " nnoremap <S-Down>  <C-w>+<CR>
-nnoremap <C-h> <C-w><<CR>
-nnoremap <C-l> <C-w>><CR>
-nnoremap <C-j> <C-w>-<CR>
-nnoremap <C-k> <C-w>+<CR>
+nnoremap <C-h> <C-w><
+nnoremap <C-l> <C-w>>
+nnoremap <C-j> <C-w>-
+nnoremap <C-k> <C-w>+
 
 
 
