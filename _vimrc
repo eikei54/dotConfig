@@ -68,6 +68,15 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 "NeoBundle 'cohama/vim-hier'
 
+"if has('nvim')
+"  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  NeoBundle 'Shougo/deoplete.nvim'
+"  NeoBundle 'roxma/nvim-yarp'
+"  NeoBundle 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#enable_at_startup = 1
+
 " Display only difference part in vimdiff
 NeoBundle 'vim-scripts/diffchar.vim'
 
@@ -290,9 +299,39 @@ set shiftwidth=4
 " 行間をセットする
 "set linespace=2
 
-"補完候補を一覧で出力, :e <tab> で一表示, :e <tab><tab> で完全補完モードに入る
+"
+" ------ Tab completion  ------
+"
+
+" will insert tab at beginning of line,
+" will use completion if not at beginningw
+
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,list:full
+"set wildmode=longest,list
+
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+
+" . scan the current buffer, b scan other loaded buffers that are in the buffer list, u scan the unloaded buffers that
+" are in the buffer list, w scan buffers from other windows, t tag completion
+set complete=.,b,u,t,w,]
+
+" Keyword list
+set complete+=k~/.vim/keywords.txt
+
+"
+" ------ Tab completion  ------
+"
 
 set laststatus=2    " Always display status
 set showtabline=2   " Always display the tabline, even if there is only one tab
