@@ -224,7 +224,6 @@ set background=dark
 
 set backspace=indent,eol,start
 
-autocmd GUIEnter * set transparency=249         " set transparency
 
 set shortmess+=I                                " 起動時のメッセージを消す
 
@@ -233,7 +232,17 @@ set title
 
 "" Visible for Zenkaku Space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
-au BufNewFile,BufRead * match ZenkakuSpace /　/
+
+augroup vimrc_buffer_conf
+    autocmd!
+    autocmd BufNewFile,BufRead * match ZenkakuSpace /　/
+    " ディレクトリを開いたファイルと同じ場所へ移動
+    autocmd BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
+    " Remove space at line end when saving file
+    autocmd BufWritePre * :%s/\s\+$//ge
+    " set no indent at leving Insert mode
+    autocmd InsertLeave * set nopaste
+augroup END
 
 set noswapfile                                  " swap ファイルを作成しない
 set nowritebackup                               " swap ファイルを作成しない
@@ -332,37 +341,30 @@ set complete+=k~/.vim/keywords.txt
 "
 " ------ Tab completion  ------
 "
-
 set laststatus=2    " Always display status
 set showtabline=2   " Always display the tabline, even if there is only one tab
 set noshowmode      " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-" ディレクトリを開いたファイルと同じ場所へ移動
-au BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
-
-" Remove space at line end when saving file
-autocmd BufWritePre * :%s/\s\+$//ge
-
-" set no indent at paste
-autocmd InsertLeave * set nopaste
-
-
-"-------Format--------
+"------- vim-indent settings -------
 set autoindent                  "自動インデントを有効化する
 set smartindent                 "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
 "------- vim-indent-guides ------
 let g:indent_guides_enable_on_vim_startup=1
-
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=234
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#151515 ctermbg=232
 let g:indent_guides_guide_size=4
 let g:indent_guides_color_change_percent = 100
 
-"------- vim-diff setting
-
-au FilterWritePre * if &diff | colorscheme hybrid | endif
+augroup vimrc_vim_diff_setting
+    autocmd!
+    " set transparency
+    autocmd GUIEnter * set transparency=249
+    " indent color setting
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=234
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#151515 ctermbg=232
+    " vim-diff setting
+    autocmd FilterWritePre * if &diff | colorscheme hybrid | endif
+augroup END
 
 " ------ CtrlP Setting ------------
 
@@ -514,8 +516,10 @@ nnoremap <S-F8> :cnew<CR>
 nnoremap <C-F7> :cfirst<CR>
 nnoremap <C-F8> :clast<CR>
 
-nnoremap <F7>   :cprevious<CR>zz " previous
-nnoremap <F8>   :cnext<CR>zz     " next
+" previous
+nnoremap <F7>   :cprevious<CR>zz
+" next
+nnoremap <F8>   :cnext<CR>zz
 
 " ----------------------------
 " ctags setting
@@ -591,10 +595,11 @@ setlocal statusline+=\ %L
 " Type p as preview of quickfix
 noremap <buffer> p  <CR>zz<C-w>p
 
-" hook setting to add cw in vimgrep
-autocmd QuickFixCmdPost *grep* cwindow
-
-
+" hook after executing QucikFixCmd in vimgrep
+augroup vimgrep_
+    autocmd!
+    autocmd QuickFixCmdPost *grep* cwindow
+augroup END
 
 " 現在のファイルパスを表示する
 nnoremap <C-g> 1<C-g>
@@ -687,11 +692,13 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
+augroup vimrc_RainbowParentheses
+    autocmd!
+    autocmd VimEnter * RainbowParenthesesToggle
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
+augroup END
 " ------------------------------------
 " for Ag Setting
 " ------------------------------------
