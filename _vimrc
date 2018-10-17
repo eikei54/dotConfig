@@ -305,15 +305,27 @@ set tabstop=4                                    " ファイル内の <Tab> が�
 set expandtab                                    " タブの代わりに空白文字を挿入する
 set shiftwidth=4
 
-" 行間をセットする
-"set linespace=2
 
 "
+" https://qiita.com/itmammoth/items/312246b4b7688875d023
+"
+
+" hilight the keyword under the cursor
+nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+" fix the typo
+inoremap <C-t> <Esc><Left>"zx"zpa
+
+" not yank in x, or s
+nnoremap x "_x
+nnoremap s "_s
+
+""
 " ------ Tab completion  ------
 "
 
 " will insert tab at beginning of line,
 " will use completion if not at beginningw
+
 
 set wildmenu
 set wildmode=list:longest,list:full
@@ -564,7 +576,7 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-c> <Esc>
+inoremap <C-c> <Esc><Right>
 " delete the part after cursor in the line
 "inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
 
