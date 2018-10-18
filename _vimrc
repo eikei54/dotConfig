@@ -287,15 +287,25 @@ set mouse-=a
 set t_Co=256
 set termguicolors
 
-set cursorline                                   "カレント行のハイライト
-hi clear CursorLine                              "行番号のハイライト
+set cursorline
+hi clear cursorline
 
 "" define cursor colr
-hi Cursor         guifg=#F8F8F8           guibg=#00FF00                 "define Cursol Color
+hi clear Cursor
+hi Cursor cterm=bold ctermfg=20 ctermbg=50 gui=bold guifg=#F8F8F8 guibg=#00FF00
+"hi Cursor ctermfg=NONE ctermbg=300
 "hi CursorIM       guifg=#F8F8F8           guibg=#002947"#5F5A60
 
-highlight LineNR cterm=none ctermfg=48 ctermbg=none
-highlight CursorLineNr term=bold cterm=none ctermfg=193 ctermbg=none
+" Underline for GUI
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+" Underline for color terminal
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+
+
+highlight clear LineNR
+highlight clear CursorLineNR
+highlight LineNR cterm=NONE ctermfg=237 ctermbg=NONE
+highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE
 
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
