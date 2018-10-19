@@ -68,6 +68,15 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 "NeoBundle 'cohama/vim-hier'
 
+"if has('nvim')
+"  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  NeoBundle 'Shougo/deoplete.nvim'
+"  NeoBundle 'roxma/nvim-yarp'
+"  NeoBundle 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#enable_at_startup = 1
+
 " Display only difference part in vimdiff
 NeoBundle 'vim-scripts/diffchar.vim'
 
@@ -215,7 +224,6 @@ set background=dark
 
 set backspace=indent,eol,start
 
-autocmd GUIEnter * set transparency=249         " set transparency
 
 set shortmess+=I                                " 起動時のメッセージを消す
 
@@ -224,7 +232,17 @@ set title
 
 "" Visible for Zenkaku Space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
-au BufNewFile,BufRead * match ZenkakuSpace /　/
+
+augroup vimrc_buffer_conf
+    autocmd!
+    autocmd BufNewFile,BufRead * match ZenkakuSpace /　/
+    " ディレクトリを開いたファイルと同じ場所へ移動
+    autocmd BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
+    " Remove space at line end when saving file
+    autocmd BufWritePre * :%s/\s\+$//ge
+    " set no indent at leving Insert mode
+    autocmd InsertLeave * set nopaste
+augroup END
 
 set noswapfile                                  " swap ファイルを作成しない
 set nowritebackup                               " swap ファイルを作成しない
@@ -269,15 +287,25 @@ set mouse-=a
 set t_Co=256
 set termguicolors
 
-set cursorline                                   "カレント行のハイライト
-hi clear CursorLine                              "行番号のハイライト
+set cursorline
+hi clear cursorline
 
 "" define cursor colr
-hi Cursor         guifg=#F8F8F8           guibg=#00FF00                 "define Cursol Color
+hi clear Cursor
+hi Cursor cterm=bold ctermfg=20 ctermbg=50 gui=bold guifg=#F8F8F8 guibg=#00FF00
+"hi Cursor ctermfg=NONE ctermbg=300
 "hi CursorIM       guifg=#F8F8F8           guibg=#002947"#5F5A60
 
-highlight LineNR cterm=none ctermfg=48 ctermbg=none
-highlight CursorLineNr term=bold cterm=none ctermfg=193 ctermbg=none
+" Underline for GUI
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+" Underline for color terminal
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+
+
+highlight clear LineNR
+highlight clear CursorLineNR
+highlight LineNR cterm=NONE ctermfg=237 ctermbg=NONE
+highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE
 
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
@@ -287,43 +315,78 @@ set tabstop=4                                    " ファイル内の <Tab> が�
 set expandtab                                    " タブの代わりに空白文字を挿入する
 set shiftwidth=4
 
-" 行間をセットする
-"set linespace=2
 
-"補完候補を一覧で出力, :e <tab> で一表示, :e <tab><tab> で完全補完モードに入る
+"
+" https://qiita.com/itmammoth/items/312246b4b7688875d023
+"
+
+" hilight the keyword under the cursor
+nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+" fix the typo
+inoremap <C-t> <Esc><Left>"zx"zpa
+
+" not yank in x, or s
+nnoremap x "_x
+nnoremap s "_s
+
+""
+" ------ Tab completion  ------
+"
+
+" will insert tab at beginning of line,
+" will use completion if not at beginningw
+
+
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,list:full
+"set wildmode=longest,list
 
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+
+" . scan the current buffer, b scan other loaded buffers that are in the buffer list, u scan the unloaded buffers that
+" are in the buffer list, w scan buffers from other windows, t tag completion
+set complete=.,b,u,t,w,]
+
+" Keyword list
+set complete+=k~/.vim/keywords.txt
+
+"
+" ------ Tab completion  ------
+"
 set laststatus=2    " Always display status
 set showtabline=2   " Always display the tabline, even if there is only one tab
 set noshowmode      " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-" ディレクトリを開いたファイルと同じ場所へ移動
-au BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
-
-" Remove space at line end when saving file
-autocmd BufWritePre * :%s/\s\+$//ge
-
-" set no indent at paste
-autocmd InsertLeave * set nopaste
-
-
-"-------Format--------
+"------- vim-indent settings -------
 set autoindent                  "自動インデントを有効化する
 set smartindent                 "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
 "------- vim-indent-guides ------
 let g:indent_guides_enable_on_vim_startup=1
-
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=234
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#151515 ctermbg=232
 let g:indent_guides_guide_size=4
 let g:indent_guides_color_change_percent = 100
 
-"------- vim-diff setting
-
-au FilterWritePre * if &diff | colorscheme hybrid | endif
+augroup vimrc_vim_diff_setting
+    autocmd!
+    " set transparency
+    autocmd GUIEnter * set transparency=249
+    " indent color setting
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=234
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#151515 ctermbg=232
+    " vim-diff setting
+    autocmd FilterWritePre * if &diff | colorscheme hybrid | endif
+augroup END
 
 " ------ CtrlP Setting ------------
 
@@ -475,8 +538,10 @@ nnoremap <S-F8> :cnew<CR>
 nnoremap <C-F7> :cfirst<CR>
 nnoremap <C-F8> :clast<CR>
 
-nnoremap <F7>   :cprevious<CR>zz " previous
-nnoremap <F8>   :cnext<CR>zz     " next
+" previous
+nnoremap <F7>   :cprevious<CR>zz
+" next
+nnoremap <F8>   :cnext<CR>zz
 
 " ----------------------------
 " ctags setting
@@ -521,7 +586,7 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-c> <Esc>
+inoremap <C-c> <Esc><Right>
 " delete the part after cursor in the line
 "inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
 
@@ -552,10 +617,11 @@ setlocal statusline+=\ %L
 " Type p as preview of quickfix
 noremap <buffer> p  <CR>zz<C-w>p
 
-" hook setting to add cw in vimgrep
-autocmd QuickFixCmdPost *grep* cwindow
-
-
+" hook after executing QucikFixCmd in vimgrep
+augroup vimgrep_
+    autocmd!
+    autocmd QuickFixCmdPost *grep* cwindow
+augroup END
 
 " 現在のファイルパスを表示する
 nnoremap <C-g> 1<C-g>
@@ -648,7 +714,7 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-augroup RainbowParentheses_conf
+augroup vimrc_RainbowParentheses
     autocmd!
     autocmd VimEnter * RainbowParenthesesToggle
     autocmd Syntax * RainbowParenthesesLoadRound
