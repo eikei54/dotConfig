@@ -278,24 +278,24 @@ set undodir=$HOME/.vim/undo
 
 set mouse-=a
 
-" カーソルラインがONの時、行全体をハイライトする
-"hi CursorLine cterm=NONE ctermfg=Black ctermbg=Blue
-
-" カーソルラインがONの時、行番号をハイライトする
-"hi CursorColumn cterm=NONE ctermbg=Blue ctermfg=black
-
 set t_Co=256
 set termguicolors
 
 set cursorline                                   "カレント行のハイライト
-hi clear CursorLine                              "行番号のハイライト
+hi clear cursorline                              "行番号のハイライト
 
 "" define cursor colr
-hi Cursor         guifg=#F8F8F8           guibg=#00FF00                 "define Cursol Color
+hi Cursor guifg=peru guibg=wheat
 "hi CursorIM       guifg=#F8F8F8           guibg=#002947"#5F5A60
 
-highlight LineNR cterm=none ctermfg=48 ctermbg=none
-highlight CursorLineNr term=bold cterm=none ctermfg=193 ctermbg=none
+highlight LineNR cterm=NONE ctermfg=4 ctermbg=NONE
+highlight CursorLineNr term=bold cterm=NONE ctermfg=22 ctermbg=None
+
+" カーソルラインがONの時、行全体をハイライトする
+hi cursorline term=underline cterm=NONE ctermfg=NONE ctermbg=NONE
+
+" カーソルラインがONの時、行番号をハイライトする
+"hi CursorColumn cterm=NONE ctermbg=Blue ctermfg=black
 
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
@@ -311,7 +311,7 @@ set shiftwidth=4
 "
 
 " hilight the keyword under the cursor
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap <silent> <Space>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 " fix the typo
 inoremap <C-t> <Esc><Left>"zx"zpa
 
@@ -437,6 +437,12 @@ set clipboard+=autoselect
 " <Leader>i でコードをインデント整形
 "map <Leader>i gg=<S-g><C-o><C-o>zz
 
+"" hilight the current cursor
+nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+
+"" turn off hilight part by pushing esc key twice
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
 " 最後に変更した場所へ戻る(便利)
 map <C-m> `.
 
@@ -550,12 +556,6 @@ imap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>a
 "" disable dangerous input type
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
-
-"" hilight the current cursor
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-
-"" turn off hilight part by pushing esc key twice
-nnoremap <ESC><ESC> :nohlsearch<CR>
 
 "
 " input mode setting
