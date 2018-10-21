@@ -77,6 +77,15 @@ NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 "endif
 "let g:deoplete#enable_at_startup = 1
 
+"if has('nvim')
+"  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  NeoBundle 'Shougo/deoplete.nvim'
+"  NeoBundle 'roxma/nvim-yarp'
+"  NeoBundle 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#enable_at_startup = 1
+
 " Display only difference part in vimdiff
 NeoBundle 'vim-scripts/diffchar.vim'
 
@@ -106,6 +115,7 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'scwood/vim-hybrid'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'dracula/vim'
 
 "
 " vim-clang
@@ -456,7 +466,7 @@ nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 
 "" turn off hilight part by pushing esc key twice
 nnoremap <ESC><ESC> :nohlsearch<CR>
-nnoremap <Leader>nh :nohlsearch<CR>
+nnoremap <C-l> :nohlsearch<CR>
 
 
 " 最後に変更した場所へ戻る(便利)
@@ -563,6 +573,13 @@ set tags+=./tags;tags;$HOME
 nnoremap <F9> <C-t>
 nnoremap <F10> <C-]>
 nnoremap <F11> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
+
+
+function! UpdateTags()
+  execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
+  echohl StatusLine | echo "C/C++ tag updated" | echohl None
+endfunction
+nnoremap <F4> :call UpdateTags()
 
 
 map  <F12>      :if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>
