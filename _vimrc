@@ -299,6 +299,13 @@ highlight CursorLine gui=underline guifg=NONE guibg=NONE
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 
+" Enable underline for only active window
+augroup vimrc_set_cursorline_only_active_window
+  autocmd!
+  autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
+
 highlight clear LineNR
 highlight clear CursorLineNR
 highlight LineNR cterm=NONE ctermfg=237 ctermbg=NONE
@@ -449,6 +456,8 @@ nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 
 "" turn off hilight part by pushing esc key twice
 nnoremap <ESC><ESC> :nohlsearch<CR>
+nnoremap <Leader>nh :nohlsearch<CR>
+
 
 " 最後に変更した場所へ戻る(便利)
 map <C-m> `.
