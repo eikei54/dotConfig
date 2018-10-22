@@ -67,6 +67,7 @@ NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 NeoBundle 'inkarkat/vim-mark'
+NeoBundle 'inkarkat/vim-ingo-library'
 
 "if has('nvim')
 "  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -256,8 +257,6 @@ set scrolloff=5
 "検索語が画面の真ん中に来るようにする
 nmap n nzz
 nmap N Nzz
-nmap * *zz
-nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
@@ -452,7 +451,7 @@ nnoremap Y "+Y
 
 "" highlight the current word withoug moving the cursor
 nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-nnoremap * *``
+"nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
 nnoremap <ESC><ESC> :nohlsearch<CR>
