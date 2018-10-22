@@ -441,11 +441,15 @@ nnoremap ? ?\v
 
 set clipboard+=autoselect
 
+" use cliipboard
+nnoremap Y "+Y
+
 " <Leader>i でコードをインデント整形
 "map <Leader>i gg=<S-g><C-o><C-o>zz
 
-"" hilight the current cursor
+"" highlight the current word withoug moving the cursor
 nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -711,13 +715,12 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-augroup vimrc_RainbowParentheses
-    autocmd!
-    autocmd VimEnter * RainbowParenthesesToggle
-    autocmd Syntax * RainbowParenthesesLoadRound
-    autocmd Syntax * RainbowParenthesesLoadSquare
-    autocmd Syntax * RainbowParenthesesLoadBraces
-augroup END
+" Dont' set any augroup for RainbowParentheses
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
+
 " ------------------------------------
 " for Ag Setting
 " ------------------------------------
