@@ -79,7 +79,7 @@ NeoBundle 'inkarkat/vim-ingo-library'
 "let g:deoplete#enable_at_startup = 1
 
 " Display only difference part in vimdiff
-NeoBundle 'vim-scripts/diffchar.vim'
+NeoBundle 'rickhowe/diffchar.vim'
 
 " For Python env
 NeoBundle 'davidhalter/jedi-vim'
