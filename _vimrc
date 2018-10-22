@@ -66,16 +66,7 @@ NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-ctrlspace/vim-ctrlspace'
-"NeoBundle 'cohama/vim-hier'
-
-"if has('nvim')
-"  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  NeoBundle 'Shougo/deoplete.nvim'
-"  NeoBundle 'roxma/nvim-yarp'
-"  NeoBundle 'roxma/vim-hug-neovim-rpc'
-"endif
-"let g:deoplete#enable_at_startup = 1
+NeoBundle 'inkarkat/vim-mark'
 
 "if has('nvim')
 "  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -437,11 +428,6 @@ let mapleader = "\<Space>"
 nnoremap / /\v
 nnoremap ? ?\v
 
-" file open
-"nnoremap <Leader>o :CtrlP<CR>
-" file save
-"nnoremap <Leader>w :w<CR>
-
 " bind s to grep word under cursor
 "nnoremap <Leader>f :Ag! "\b<C-R><C-W>\b" ./%<CR>
 " bind g to grep word under cursor
@@ -470,8 +456,7 @@ nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
 nnoremap <ESC><ESC> :nohlsearch<CR>
-nnoremap <C-l> :nohlsearch<CR>
-
+nnoremap <Leader>o :nohlsearch<CR>
 
 " 最後に変更した場所へ戻る(便利)
 map <C-m> `.
