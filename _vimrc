@@ -485,12 +485,12 @@ nnoremap wT <C-w>T
 "nnoremap s <Nop>
 nnoremap sn gt
 nnoremap sp gT
-nnoremap s= <C-w>=
-nnoremap sw <C-w>w
-nnoremap sr <C-w>r
-nnoremap sx <C-w>x
-nnoremap so <C-w>_<C-w>|
-nnoremap sO <C-w>=
+nnoremap w= <C-w>=
+nnoremap ww <C-w>w
+nnoremap wr <C-w>r
+nnoremap wx <C-w>x
+nnoremap wo <C-w>_<C-w>|
+nnoremap wO <C-w>=
 nnoremap st :tabnew<CR>
 nnoremap sq :close<CR>
 nnoremap sQ :%bd<CR>
@@ -522,6 +522,8 @@ nnoremap <C-l> <C-w>>
 nnoremap <C-j> <C-w>-
 nnoremap <C-k> <C-w>+
 
+" save vim session in current folder
+nnoremap <C-s> :mks!
 
 
 " for NERDTree setting, open by ctrl+e
@@ -765,16 +767,16 @@ nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
 
 
 " buffer内 grep検索
-nnoremap <silent> sg  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
 " カーソル位置の単語をgrep検索
-nnoremap <silent> scg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+nnoremap <silent> [unite]gc :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
 
 " grep検索結果の再呼出
-nnoremap <silent> sr  :<C-u>UniteResume search-buffer<CR>
+nnoremap <silent> [unite]gr  :<C-u>UniteResume search-buffer<CR>
 
 " Unite history/yank
-nnoremap <silent> sy  :<C-u>Unite history/yank -default-action=append<CR>
+nnoremap <silent> [unite]yh  :<C-u>Unite history/yank -default-action=append<CR>
 
 
 "最近開いたファイル履歴の保存数
@@ -799,7 +801,7 @@ nnoremap <silent> sB :Unite buffer -buffer-name=file<CR>
 
 "uniteを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
+function! s:unite_my_settings()
 	"ESCでuniteを終了
 	nmap <buffer> <ESC> <Plug>(unite_exit)
 	"入力モードのときjjでノーマルモードに移動
@@ -821,7 +823,7 @@ function! s:unite_my_settings()"{{{
 	"ctrl+oでその場所に開く
 	nnoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 	inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
-endfunction"}}}
+endfunction
 
 " ------------------------------------
 " for Original Vim Setting
