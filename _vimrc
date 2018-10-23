@@ -276,7 +276,7 @@ set history=1000                                 "コマンドを1000個分、�
 
 set undodir=$HOME/.vim/undo
 
-set mouse-=a
+set mouse+=a
 
 set t_Co=256
 set termguicolors
