@@ -22,7 +22,6 @@ set fileformats=unix,dos,mac
 
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
-
 " □とか○の文字があってもカーソル位置がずれないようにする
 if exists('&ambiwidth')
     set ambiwidth=double
@@ -161,37 +160,61 @@ let g:lightline = {
       \     'lineinfo': '⭡ %3l:%-2v',
       \   },
       \   'component_function': {
-      \     'readonly': 'LightLineReadonly',
-      \     'fugitive': 'LightLineFugitive'
+      \     'modified': 'LightlineModified',
+      \     'readonly': 'LightlineReadonly',
+      \     'fugitive': 'LightlineFugitive',
+      \     'filename': 'LightlineFilename',
+      \     'filetype': 'LightlineFiletype',
+      \     'fileencoding': 'LightlineFileencoding',
+      \     'mode': 'LightlineMode'
       \   },
       \   'separator': { 'left': "\u2B80", 'right': "\u2B82" },
       \   'subseparator': { 'left': "\u2B81", 'right': "\u2B83" }
       \   }
-"let g:lightline = {
-"    \ 'colorscheme': 'wombat',
-"    \ 'separator': { 'left': '⮀', 'right': '⮂' },
-"    \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-"    \ }
-"let g:lightline = {
-"    \ 'colorscheme': 'wombat',
-"    \ 'separator': { 'left': '\u2b80', 'right': '\2b82' },
-"    \ 'subseparator': { 'left': '\u2b81', 'right': '\2b83' }
-"    \ }
 "let g:lightline.enable = {
 "    \ 'tabline': 0
 "    \ }
 "
-function! LightLineReadonly()
+function! LightlineModified()
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
     return &readonly ? '⭤' : ''
 endfunction
 
-function! LightLineFugitive()
+function! LightlineFugitive()
     if exists('*fugitive#head')
         let branch = fugitive#head()
         return branch !=# '' ? '⭠ '.branch : ''
     endif
     return ''
 endfunction
+
+function! LightlineFilename()
+    return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFiletype()
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineFileencoding()
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+    return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+
+
+
 
 " ------------------------------------
 " For tmux color Setting
@@ -255,10 +278,10 @@ set nobackup                                    " バックアップファイル
 set scrolloff=5
 
 "検索語が画面の真ん中に来るようにする
-nmap n nzz
-nmap N Nzz
-nmap g* g*zz
-nmap g# g#zz
+nmap <silent>n nzz
+nmap <silent>N Nzz
+nmap <silent>g* g*zz
+nmap <silent>g# g#zz
 
 set hlsearch                                     " サーチ：検索語をハイライトする
 set incsearch                                    " サーチ：インクリメンタルサーチ（検索中に文字を打つと自動で検索していく）
