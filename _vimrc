@@ -154,7 +154,7 @@ let Tlist_Use_Right_Window = 1
 let g:lightline = {
       \   'colorscheme': 'deus',
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename',] ]
+      \     'left': [ [ 'mode', 'paste' ], [ 'readonly', 'fugitive', 'filename',] ]
       \   },
       \   'component': {
       \     'lineinfo': '⭡ %3l:%-2v',
