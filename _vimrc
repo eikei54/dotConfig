@@ -68,6 +68,9 @@ NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 NeoBundle 'inkarkat/vim-mark'
 NeoBundle 'inkarkat/vim-ingo-library'
 
+" for displaying index searched item
+NeoBundle 'google/vim-searchindex'
+
 "if has('nvim')
 "  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "else
@@ -233,6 +236,13 @@ let g:clang_format_auto = 1
 let g:clang_format_style = 'Google'
 let g:clang_check_syntax_auto = 1
 
+
+" ------------------------------------
+" For vim-searchindex setting
+" ------------------------------------
+"let g:searchindex_improved_star = 0
+"let g:searchindex_star_case = 0
+
 " ------------------------------------
 " For Common Setting
 " ------------------------------------
@@ -278,10 +288,10 @@ set nobackup                                    " バックアップファイル
 set scrolloff=5
 
 "検索語が画面の真ん中に来るようにする
-nmap <silent>n nzz
-nmap <silent>N Nzz
-nmap <silent>g* g*zz
-nmap <silent>g# g#zz
+"nmap <silent>n nzz
+"nmap <silent>N Nzz
+"nmap <silent>g* g*zz
+"nmap <silent>g# g#zz
 
 set hlsearch                                     " サーチ：検索語をハイライトする
 set incsearch                                    " サーチ：インクリメンタルサーチ（検索中に文字を打つと自動で検索していく）
