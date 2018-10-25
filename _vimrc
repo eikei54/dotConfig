@@ -344,6 +344,8 @@ highlight clear CursorLineNR
 highlight LineNR cterm=NONE ctermfg=237 ctermbg=NONE
 highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE
 
+hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#AEF359 guifg=#9400D3
+
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
 
