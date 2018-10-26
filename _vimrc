@@ -70,6 +70,8 @@ NeoBundle 'inkarkat/vim-ingo-library'
 
 " for displaying index searched item
 NeoBundle 'google/vim-searchindex'
+" Display diffs in Vim
+NeoBundle 'airblade/vim-gitgutter'
 
 "if has('nvim')
 "  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
