@@ -346,14 +346,19 @@ highlight clear CursorLineNR
 highlight LineNR cterm=NONE ctermfg=237 ctermbg=NONE
 highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE
 
+" GREEN - Purple
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#AEF359 guifg=#9400D3
 " GREEN - RED
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#16DD38 guifg=#B21F35
 " GREEN - GREEN
-hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#A9E558 guifg=#006544
+"hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#A9E558 guifg=#006544
 " PIONEER - RED
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#FEC5DE guifg=#EA0337
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#FFADCE guifg=#EE2F81
+" LIGHTBLUE BLUE
+"hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#C0C0FF guifg=#1414BB
+"hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#052D61
+hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#1414BB
 
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
