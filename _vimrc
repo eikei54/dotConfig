@@ -358,7 +358,8 @@ highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE
 " LIGHTBLUE BLUE
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#C0C0FF guifg=#1414BB
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#052D61
-hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#1414BB
+hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#000047
+"hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#00483A
 
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
