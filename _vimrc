@@ -85,7 +85,7 @@ NeoBundle 'airblade/vim-gitgutter'
 " Display only difference part in vimdiff
 NeoBundle 'rickhowe/diffchar.vim'
 
-if v:version > 800
+if v:version >= 800
     NeoBundle 'w0rp/ale'
 endif
 
