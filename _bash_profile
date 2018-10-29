@@ -38,7 +38,8 @@ else
         export MSYS=winsymlinks:nativestrict
     fi
 fi
-export PATH=$PATH:/c/tools/bin:~/bin
+
+export PATH=$PATH:/mingw64/bin:/c/tools/bin:~/bin
 
 
 export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/
