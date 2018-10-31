@@ -257,7 +257,7 @@ set helplang=en                                 " use English version help
 
 syntax on
 
-set updatetime 500
+set updatetime=500
 
 "" for base16 colorscheme setting
 let base16colorspace=256  " Access colors present in 256 colorspace
