@@ -9,7 +9,7 @@
 *.arg
 
 *.dll
-*.exe
+#*.exe
 *.patch
 *.sh
 #*.txt
