@@ -48,6 +48,24 @@ export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
 alias python="winpty python"
 alias ipython="winpty ipython"
 
+
+#=================================================================
+#
+# Check if OS is Windows or not
+#
+#=================================================================
+
+if [ "$COMSPEC" != "" ]; then
+    # OS is Windows
+    #echo "COMSPEC is defined, OS is Windows."
+    if [ -x ctags.exe ]; then
+        aliaas ctags='ctags.exe'
+    fi
+    if [ -x cscope.exe ]; then
+        aliaas cscope='cscope.exe'
+    fi
+fi
+
 # Set PATH so it includes user's private bin if it exists
 # if [ -d "${HOME}/bin" ] ; then
 #   PATH="${HOME}/bin:${PATH}"
