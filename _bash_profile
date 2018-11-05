@@ -48,6 +48,9 @@ export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
 alias python="winpty python"
 alias ipython="winpty ipython"
 
+export GOROOT=/mingw64/lib/go
+export GOPATH=/mingw64
+
 
 #=================================================================
 #
