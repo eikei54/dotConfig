@@ -37,6 +37,6 @@ BoldCyan=95,227,210
 White=248,248,242
 BoldWhite=249,248,245
 
-Locale=
-Charset=
+Locale=ja_JP
+Charset=UTF-8
 CursorType=block
