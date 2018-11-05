@@ -50,7 +50,8 @@ alias ipython="winpty ipython"
 
 export GOROOT=/mingw64/lib/go
 export GOPATH=/mingw64
-
+export PATH=$GOPATH:$PATH
+export GO15VENDOREXPERIMENT=1
 
 #=================================================================
 #
