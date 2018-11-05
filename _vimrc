@@ -50,10 +50,10 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hari-rangarajan/CCTree'
 NeoBundle 'vim-scripts/TagHighlight'
-NeoBundle "vim-scripts/taglist.vim"
+"NeoBundle "vim-scripts/taglist.vim"
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'godlygeek/tabular'
