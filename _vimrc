@@ -187,7 +187,7 @@ let Tlist_Use_Right_Window = 1
 let g:lightline = {
       \   'colorscheme': 'deus',
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'readonly', 'fugitive', 'filename',] ]
+      \     'left': [ [ 'mode', 'paste' ], [ 'readonly', 'fugitive', 'filename', 'funcname', ] ]
       \   },
       \   'component': {
       \     'lineinfo': '⭡ %3l:%-2v',
@@ -199,7 +199,8 @@ let g:lightline = {
       \     'filename': 'LightlineFilename',
       \     'filetype': 'LightlineFiletype',
       \     'fileencoding': 'LightlineFileencoding',
-      \     'mode': 'LightlineMode'
+      \     'mode': 'LightlineMode',
+      \     'funcname': 'LightlineDispFuncName',
       \   },
       \   'separator': { 'left': "\u2B80", 'right': "\u2B82" },
       \   'subseparator': { 'left': "\u2B81", 'right': "\u2B83" }
@@ -245,8 +246,17 @@ function! LightlineMode()
     return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+function! LightlineDispFuncName()
+    return winwidth(0) > 60 ? tagbar#currenttag('[%s] ','') : ''
+endfunction
 
-
+" ------------------------------------
+" For Tagbar Setting
+" ------------------------------------
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
+let g:tagbar_previewwin_pos = "aboveleft"
+let g:tagbar_autoshowtag = 1
 
 
 " ------------------------------------
