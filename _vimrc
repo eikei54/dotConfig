@@ -152,6 +152,30 @@ if &diff
 endif
 
 " ------------------------------------
+" For NERDTree setting
+" ------------------------------------
+
+"Delete the buffer which is no more valid (already remove/detelted)
+let NERDTreeAutoDeleteBuffer=1
+
+
+"Close NERDTree Window automatically if it's last window in vim
+function! s:CloseIfOnlyControlWinLeft()
+  if winnr("$") != 1
+    return
+  endif
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+        \ || &buftype == 'quickfix'
+    q
+  endif
+endfunction
+
+augroup CloseIfOnlyControlWinLeft
+  au!
+  au BufEnter * call s:CloseIfOnlyControlWinLeft()
+augroup END
+
+" ------------------------------------
 " For Taglist
 " ------------------------------------
 let Tlist_Use_Right_Window = 1
@@ -257,7 +281,7 @@ set helplang=en                                 " use English version help
 
 syntax on
 
-set updatetime=500
+set updatetime=750
 
 "" for base16 colorscheme setting
 let base16colorspace=256  " Access colors present in 256 colorspace
