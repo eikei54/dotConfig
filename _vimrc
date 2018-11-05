@@ -247,7 +247,7 @@ function! LightlineMode()
 endfunction
 
 function! LightlineDispFuncName()
-    return winwidth(0) > 60 ? tagbar#currenttag('[%s] ','') : ''
+    return winwidth(0) > 60 ? tagbar#currenttag('%s ','') : ''
 endfunction
 
 " ------------------------------------
@@ -652,6 +652,7 @@ nnoremap <F8>   :cnext<CR>zz
 set tags+=./tags;tags;$HOME
 nnoremap <F9> <C-t>
 nnoremap <F10> <C-]>
+" Open displayed function in another tab page
 nnoremap <F11> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 
 
@@ -670,9 +671,9 @@ imap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>a
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
-"
+" ----------------------------
 " input mode setting
-"
+" ----------------------------
 "" back to command mode by pushing j key twice
 inoremap <silent> jj <ESC>
 
