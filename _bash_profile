@@ -55,6 +55,21 @@ export GO15VENDOREXPERIMENT=1
 
 #=================================================================
 #
+# Definition to enable fish shell
+#
+#=================================================================
+
+if [ "$XDG_DATA_H0ME" = "" ]; then
+    export XDG_DATA_HOME=/xdg_d
+fi
+
+if [ "$XDG_CONFIG_H0ME" = "" ]; then
+    export XDG_CONFIG_HOME=/xdg_c
+fi
+
+
+#=================================================================
+#
 # Check if OS is Windows or not
 #
 #=================================================================
