@@ -581,6 +581,7 @@ nnoremap wr <C-w>r
 nnoremap wx <C-w>x
 nnoremap wo <C-w>_<C-w>|
 nnoremap wO <C-w>=
+nnoremap wt :TagbarToggle<CR>
 nnoremap st :tabnew<CR>
 nnoremap sq :close<CR>
 nnoremap sQ :%bd<CR>
@@ -618,6 +619,27 @@ nnoremap <C-s> :mks!
 
 " for NERDTree setting, open by ctrl+e
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+"" for Tab moving
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+nnoremap <M-6> 6gt
+nnoremap <M-7> 7gt
+nnoremap <M-8> 8gt
+nnoremap <M-9> 9gt
+inoremap <M-1> <C-o>1gt
+inoremap <M-2> <C-o>2gt
+inoremap <M-3> <C-o>3gt
+inoremap <M-4> <C-o>4gt
+inoremap <M-5> <C-o>5gt
+inoremap <M-6> <C-o>6gt
+inoremap <M-7> <C-o>7gt
+inoremap <M-8> <C-o>7gt
+inoremap <M-9> <C-o>8gt
+inoremap <M-9> <C-o>9gt
 
 "" for quickfix setting
 nnoremap [q :cprevious<CR>   " previous
