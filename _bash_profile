@@ -60,11 +60,11 @@ export GO15VENDOREXPERIMENT=1
 #=================================================================
 
 if [ "$XDG_DATA_H0ME" = "" ]; then
-    export XDG_DATA_HOME=/xdg_d
+    export XDG_DATA_HOME=$HOME/.local/share
 fi
 
 if [ "$XDG_CONFIG_H0ME" = "" ]; then
-    export XDG_CONFIG_HOME=/xdg_c
+    export XDG_CONFIG_HOME=$HOME/.config
 fi
 
 
