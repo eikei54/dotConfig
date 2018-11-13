@@ -116,6 +116,22 @@ NeoBundle 'scwood/vim-hybrid'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'dracula/vim'
+NeoBundle 'croaker/mustang-vim'
+" wombat カラースキーム
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+" jellybeans カラースキーム
+NeoBundle 'nanotech/jellybeans.vim'
+" lucius カラースキーム
+NeoBundle 'jonathanfilip/vim-lucius'
+" zenburn カラースキーム
+NeoBundle 'jnurmine/Zenburn'
+" mrkn256 カラースキーム
+NeoBundle 'mrkn/mrkn256.vim'
+" railscasts カラースキーム
+NeoBundle 'jpo/vim-railscasts-theme'
+" pyte カラースキーム
+NeoBundle 'therubymug/vim-pyte'
+
 
 "
 " vim-clang
@@ -175,6 +191,9 @@ augroup CloseIfOnlyControlWinLeft
   au BufEnter * call s:CloseIfOnlyControlWinLeft()
 augroup END
 
+" For Soliarized color scheme cui
+let g:solarized_termtrans=1
+
 " ------------------------------------
 " For Taglist
 " ------------------------------------
@@ -185,7 +204,7 @@ let Tlist_Use_Right_Window = 1
 " ------------------------------------
 
 let g:lightline = {
-      \   'colorscheme': 'deus',
+      \   'colorscheme': 'solarized',
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ], [ 'readonly', 'fugitive', 'filename', 'funcname', ] ]
       \   },
@@ -296,7 +315,8 @@ set updatetime=750
 "" for base16 colorscheme setting
 let base16colorspace=256  " Access colors present in 256 colorspace
 
-colorscheme molokai
+"colorscheme molokai
+colorscheme solarized
 set background=dark
 
 set backspace=indent,eol,start
@@ -362,7 +382,6 @@ set termguicolors
 set cursorline
 hi clear cursorline
 
-
 hi clear Cursor
 hi Cursor cterm=bold ctermfg=20 ctermbg=50 gui=bold guifg=#F8F8F8 guibg=#00FF00
 "hi Cursor ctermfg=NONE ctermbg=300
@@ -373,13 +392,6 @@ highlight CursorLine gui=underline guifg=NONE guibg=NONE
 " Underline for color terminal
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
-
-" Enable underline for only active window
-augroup vimrc_set_cursorline_only_active_window
-  autocmd!
-  autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup END
 
 highlight clear LineNR
 highlight clear CursorLineNR
@@ -400,6 +412,14 @@ highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#052D61
 hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#000047
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#00483A
+
+" Enable underline for only active window
+augroup vimrc_set_cursorline_only_active_window
+  autocmd!
+  autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
+
 
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
