@@ -116,6 +116,13 @@ NeoBundle 'scwood/vim-hybrid'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'dracula/vim'
+NeoBundle 'semibran/vim-colors-synthetic'
+NeoBundle 'ErichDonGubler/vim-sublime-monokai'
+NeoBundle 'szorfein/fromthehell.vim'
+NeoBundle 'cseelus/vim-colors-tone'
+NeoBundle 'whzup/greent.vim'
+NeoBundle 'rudrab/vim-coogle'
+NeoBundle 'koirand/tokyo-metro.vim'
 
 "
 " vim-clang
