@@ -176,6 +176,13 @@ augroup CloseIfOnlyControlWinLeft
 augroup END
 
 " ------------------------------------
+" For ale lint settings
+" ------------------------------------
+
+" disable lint at start up
+let g:ale_lint_on_enter = 0
+
+" ------------------------------------
 " For Taglist
 " ------------------------------------
 let Tlist_Use_Right_Window = 1
@@ -362,12 +369,6 @@ set termguicolors
 set cursorline
 hi clear cursorline
 
-
-hi clear Cursor
-hi Cursor cterm=bold ctermfg=20 ctermbg=50 gui=bold guifg=#F8F8F8 guibg=#00FF00
-"hi Cursor ctermfg=NONE ctermbg=300
-"hi CursorIM       guifg=#F8F8F8           guibg=#002947"#5F5A60
-
 " Underline for GUI
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
 " Underline for color terminal
@@ -385,6 +386,11 @@ highlight clear LineNR
 highlight clear CursorLineNR
 highlight LineNR cterm=NONE ctermfg=237 ctermbg=NONE
 highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE
+
+hi clear Cursor
+hi Cursor cterm=bold ctermfg=20 ctermbg=50 gui=bold guifg=#F8F8F8 guibg=#00FF00
+"hi Cursor ctermfg=NONE ctermbg=300
+"hi CursorIM       guifg=#F8F8F8           guibg=#002947"#5F5A60
 
 " GREEN - Purple
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#AEF359 guifg=#9400D3
