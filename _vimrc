@@ -73,6 +73,10 @@ NeoBundle 'google/vim-searchindex'
 " Display diffs in Vim
 NeoBundle 'airblade/vim-gitgutter'
 
+" Search words selected part in visual mode.
+NeoBundle 'nelstrom/vim-visual-star-search'
+
+
 "if has('nvim')
 "  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "else
@@ -116,6 +120,13 @@ NeoBundle 'scwood/vim-hybrid'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'dracula/vim'
+NeoBundle 'semibran/vim-colors-synthetic'
+NeoBundle 'ErichDonGubler/vim-sublime-monokai'
+NeoBundle 'szorfein/fromthehell.vim'
+NeoBundle 'cseelus/vim-colors-tone'
+NeoBundle 'eikei54/greent.vim'
+NeoBundle 'rudrab/vim-coogle'
+NeoBundle 'koirand/tokyo-metro.vim'
 
 "
 " vim-clang
@@ -522,6 +533,9 @@ let mapleader = "\<Space>"
 "" set very magic anytime for pattern search
 nnoremap / /\v
 nnoremap ? ?\v
+vnoremap / /\v
+vnoremap ? ?\v
+
 
 " bind s to grep word under cursor
 "nnoremap <Leader>f :Ag! "\b<C-R><C-W>\b" ./%<CR>
@@ -627,25 +641,29 @@ nnoremap <C-s> :mks!
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 "" for Tab moving
-nnoremap <M-1> 1gt
-nnoremap <M-2> 2gt
-nnoremap <M-3> 3gt
-nnoremap <M-4> 4gt
-nnoremap <M-5> 5gt
-nnoremap <M-6> 6gt
-nnoremap <M-7> 7gt
-nnoremap <M-8> 8gt
-nnoremap <M-9> 9gt
-inoremap <M-1> <C-o>1gt
-inoremap <M-2> <C-o>2gt
-inoremap <M-3> <C-o>3gt
-inoremap <M-4> <C-o>4gt
-inoremap <M-5> <C-o>5gt
-inoremap <M-6> <C-o>6gt
-inoremap <M-7> <C-o>7gt
-inoremap <M-8> <C-o>7gt
-inoremap <M-9> <C-o>8gt
-inoremap <M-9> <C-o>9gt
+nnoremap <c-1> 1gt
+nnoremap <c-2> 2gt
+nnoremap <c-3> 3gt
+nnoremap <c-4> 4gt
+nnoremap <c-5> 5gt
+nnoremap <c-6> 6gt
+nnoremap <c-7> 7gt
+nnoremap <c-8> 8gt
+nnoremap <c-9> 9gt
+inoremap <c-1> <C-o>1gt
+inoremap <c-2> <C-o>2gt
+inoremap <c-3> <C-o>3gt
+inoremap <c-4> <C-o>4gt
+inoremap <c-5> <C-o>5gt
+inoremap <c-6> <C-o>6gt
+inoremap <c-7> <C-o>7gt
+inoremap <c-8> <C-o>7gt
+inoremap <c-9> <C-o>8gt
+inoremap <c-9> <C-o>9gt
+
+" Command to move among tabs in Konsole-style
+map <A-Right> gt
+map <A-Left> gT
 
 "" for quickfix setting
 nnoremap [q :cprevious<CR>   " previous

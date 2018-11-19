@@ -1,12 +1,13 @@
 BoldAsFont=-1
 Columns=181
 Rows=57
+
 Transparency=off
 OpaqueWhenFocused=no
 Font=Myrica M for Powerline
 FontHeight=10
 Term=xterm-256color
-ThemeFile=
+ThemeFile=dracula
 
 DeleteSendsDEL=yes
 FontSmoothing=full

@@ -25,6 +25,9 @@ fi
 test -f ~/.profile && . ~/.profile
 test -f ~/.bashrc && . ~/.bashrc
 
+#Display time in English
+#export LANG=C
+#export LANG=en_us.utf-8A
 
 #alias
 alias la='ls -a'
