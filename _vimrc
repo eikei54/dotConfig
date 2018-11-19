@@ -653,14 +653,6 @@ nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
 
-nnoremap <F6>   :CopyCurrentLineNum<CR>
-vnoremap <F6>   :CopyCurrentLineNum<CR>
-
-nnoremap <S-F6> :CopyFileName<CR>
-vnoremap <S-F6> :CopyFileName<CR>
-
-nnoremap <C-F6> :CopyFilePath<CR>
-vnoremap <C-F6> :CopyFilePath<CR>
 
 nnoremap <S-F7> :cold<CR>
 nnoremap <S-F8> :cnew<CR>
@@ -681,8 +673,16 @@ set tags+=./tags;tags;$HOME
 nnoremap <F9> <C-t>
 nnoremap <F10> <C-]>
 " Open displayed function in another tab page
-nnoremap <F11> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
+nnoremap <S-F9> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 
+nnoremap <F12>   :CopyCurrentLineNum<CR>
+vnoremap <F12>   :CopyCurrentLineNum<CR>
+
+nnoremap <S-F12> :CopyFileName<CR>
+vnoremap <S-F12> :CopyFileName<CR>
+
+nnoremap <C-F12> :CopyFolderPath<CR>
+vnoremap <C-F12> :CopyFolderPath<CR>
 
 function! UpdateTags()
   execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
@@ -691,9 +691,9 @@ endfunction
 nnoremap <F4> :call UpdateTags()
 
 
-map  <F12>      :if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>
-cmap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>:<up>
-imap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>a
+"map  <F12>      :if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>
+"cmap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>:<up>
+"imap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>a
 
 "" disable dangerous input type
 nnoremap ZZ <Nop>
@@ -950,13 +950,13 @@ endfunction
 
 " Copy the path of file being edited into clipboard
 function! g:CopyFilePath()
-  let @* = expand("%:p")." L:".line('.')
+  let @* = expand("%:p")
   echo @*
 endfunction
 
 " Copy name of file being edited into clipboard
 function! g:CopyFileName()
-  let @* = expand("%:t")
+  let @* = expand("%:t")." L:".line('.')
   echo @*
 endfunction
 
