@@ -20,5 +20,8 @@ set lines=65
 set columns=160
 set guifont=Myrica_M_for_Powerline:h10:cANSI:qDRAFT
 
+set renderoptions=type:directx
+set antialias
+
 colorscheme molokai
 

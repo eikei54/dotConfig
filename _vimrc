@@ -68,6 +68,8 @@ NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 NeoBundle 'inkarkat/vim-mark'
 NeoBundle 'inkarkat/vim-ingo-library'
 
+NeoBundle 'guns/xterm-color-table.vim'
+
 " for displaying index searched item
 NeoBundle 'google/vim-searchindex'
 " Display diffs in Vim
@@ -381,22 +383,14 @@ set cursorline
 hi clear cursorline
 
 " Underline for GUI
-highlight CursorLine gui=bold,underline guifg=NONE guibg=NONE guisp=#87FF00
+highlight CursorLine gui=bold,underline guifg=NONE guibg=#000000 guisp=#87FF00
 " Underline for color terminal
-highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
-
-
-" Enable underline for only active window
-augroup vimrc_set_cursorline_only_active_window
-  autocmd!
-  autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup END
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=0
 
 highlight clear LineNR
 highlight clear CursorLineNR
 highlight LineNR cterm=NONE ctermfg=237 ctermbg=NONE guifg=#3A3A3A guibg=NONE
-highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=NONE guifg=#87ff00 guibg=NONE
+highlight CursorLineNr term=bold cterm=NONE ctermfg=118 ctermbg=0 guifg=#87ff00 guibg=#000000
 
 hi clear Cursor
 hi Cursor cterm=bold ctermfg=20 ctermbg=50 gui=bold guifg=#F8F8F8 guibg=#00FF00
@@ -417,6 +411,13 @@ hi Cursor cterm=bold ctermfg=20 ctermbg=50 gui=bold guifg=#F8F8F8 guibg=#00FF00
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#052D61
 hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#000047
 "hi Search cterm=NONE ctermfg=grey ctermbg=blue guibg=#93C2FF guifg=#00483A
+
+" Enable underline for only active window
+augroup vimrc_set_cursorline_only_active_window
+  autocmd!
+  autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
 
 "行を跨いで移動出来る様にする
 set whichwrap=b,s,h,l,[,],<,>
