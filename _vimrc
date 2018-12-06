@@ -385,7 +385,7 @@ hi clear cursorline
 " Underline for GUI
 highlight CursorLine gui=bold,underline guifg=NONE guibg=#000000 guisp=#87FF00
 " Underline for color terminal
-highlight CursorLine cterm=underline ctermfg=NONE ctermbg=0
+highlight CursorLine cterm=bold,underline ctermfg=NONE ctermbg=0
 
 highlight clear LineNR
 highlight clear CursorLineNR
