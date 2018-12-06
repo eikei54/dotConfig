@@ -32,6 +32,9 @@ test -f ~/.bashrc && . ~/.bashrc
 #alias
 alias la='ls -a'
 
+alias ll='ls -alF'
+alias l='ls -CF'
+
 if [ "$(uname)" = 'Darwin' ]; then
     export LSCOLORS=xbfxcxdxbxegedabagacad
     alias ls='ls -G'
@@ -42,6 +45,10 @@ else
         export MSYS=winsymlinks:nativestrict
     fi
 fi
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 export PATH=$PATH:/mingw64/bin:/c/tools/bin:~/bin
 
