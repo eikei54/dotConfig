@@ -597,7 +597,7 @@ nnoremap wT <C-w>T
 nnoremap sn gt
 nnoremap sp gT
 nnoremap w= <C-w>=
-nnoremap ww <C-w>w
+"nnoremap ww <C-w>w
 nnoremap wr <C-w>r
 nnoremap wx <C-w>x
 nnoremap wo <C-w>_<C-w>|
