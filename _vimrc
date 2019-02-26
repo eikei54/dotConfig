@@ -136,7 +136,7 @@ NeoBundle 'koirand/tokyo-metro.vim'
 " http://engineerspirit.com/2017/02/21/post-830/
 " https://qiita.com/koara-local/items/815b08ff5c6673d8a5c6
 "
-NeoBundle 'justmao945/vim-clang'
+"NeoBundle 'justmao945/vim-clang'
 
 "
 "" Insert the function header formatted Doxygen
