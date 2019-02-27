@@ -78,6 +78,9 @@ NeoBundle 'airblade/vim-gitgutter'
 " Search words selected part in visual mode.
 NeoBundle 'nelstrom/vim-visual-star-search'
 
+" Setting for fzf"
+NeoBundle '/usr/local/opt/fzf'
+NeoBundle 'junegunn/fzf.vim'
 
 "if has('nvim')
 "  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -697,11 +700,11 @@ nnoremap <S-F9> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 nnoremap <F12>   :CopyCurrentLineNum<CR>
 vnoremap <F12>   :CopyCurrentLineNum<CR>
 
-nnoremap <S-F12> :CopyFileName<CR>
-vnoremap <S-F12> :CopyFileName<CR>
+nnoremap <C-F12> :CopyFileName<CR>
+vnoremap <C-F12> :CopyFileName<CR>
 
-nnoremap <C-F12> :CopyFolderPath<CR>
-vnoremap <C-F12> :CopyFolderPath<CR>
+nnoremap <S-F12> :CopyFolderPath<CR>
+vnoremap <S-F12> :CopyFolderPath<CR>
 
 function! UpdateTags()
   execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
@@ -981,7 +984,7 @@ endfunction
 
 " Copy folder path including file being edited into clipboard
 function! g:CopyFolderPath()
-  let @* = expand("%:p:h")
+  let @* = expand("%:p:h")."/"
   echo @*
 endfunction
 
