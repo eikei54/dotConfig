@@ -529,6 +529,8 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+
+
 " ------ Key Setting ------------
 
 "" setting <Leader>key
@@ -769,7 +771,7 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 setlocal statusline+=\ %L
 
 " Type p as preview of quickfix
-noremap <buffer> p  <CR>zz<C-w>p
+"nnoremap <buffer> p  <CR>zz<C-w>p
 
 " hook after executing QucikFixCmd in vimgrep
 augroup vimgrep_
