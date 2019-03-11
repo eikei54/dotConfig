@@ -523,6 +523,9 @@ let g:ctrlp_lazy_update = 1
 " Define the height at Max
 let g:ctrlp_max_height = 20
 
+" Use custom find comand
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|inc)$',
