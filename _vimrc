@@ -808,20 +808,21 @@ let Grep_Skip_Files = '*.bak *~ *.out tags'  "バックアップファイルを�
 " ----------------------------
 
 if has("cscope")
-  if has("mac")
-  " mac用の設定
-  elseif has("unix")
-  " unix固有の設定
-    set csprg=/usr/local/bin/cscope
-  elseif has("win64")
-  " 64bit_windows固有の設定
-    set csprg=C:\tools\bin\cscope.exe
-  elseif has("win32unix")
-  " Cygwin固有の設定
-  elseif has("win32")
-  " 32bit_windows固有の設定
-    set csprg=C:\tools\bin\cscope.exe
-  endif
+  set csprg=cscope
+  "if has("mac")
+  "" mac用の設定
+  "elseif has("unix")
+  "" unix固有の設定
+  "  set csprg=/usr/local/bin/cscope
+  "elseif has("win64")
+  "" 64bit_windows固有の設定
+  "  set csprg=C:\tools\bin\cscope.exe
+  "elseif has("win32unix")
+  "" Cygwin固有の設定
+  "elseif has("win32") || has("x86_64")
+  "" 32bit_windows固有の設定
+  "  set csprg=C:\tools\bin\cscope.exe
+  "endif
   set csto=0
   set cst
   set nocsverb
