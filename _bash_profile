@@ -53,16 +53,23 @@ alias egrep='egrep --color=auto'
 export PATH=$PATH:/mingw64/bin:/c/tools/bin:~/bin
 
 
-export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/
-export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
+export GIT_MINGW=/c/Program\ Files/Git/mingw64
+if [ -e "$GIT_MINGW/libexec/git-core/" ]; then
+    export PATH=$GIT_MINGW/libexec/git-core:$PATH
+fi
 
-alias python="winpty python"
-alias ipython="winpty ipython"
+#alias python="winpty python"
+#alias ipython="winpty ipython"
 
 export GOROOT=/mingw64/lib/go
 export GOPATH=/mingw64
 export PATH=$GOPATH:$PATH
 export GO15VENDOREXPERIMENT=1
+
+if [ -e /f/Users/akihirok/Miniconda3/ ]; then
+    export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/
+    export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
+fi
 
 #=================================================================
 #
