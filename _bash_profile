@@ -1,3 +1,4 @@
+#!/bin/bash
 # To the extent possible under law, the author(s) have dedicated all
 # copyright and related and neighboring rights to this software to the
 # public domain worldwide. This software is distributed without any warranty.
@@ -70,6 +71,33 @@ if [ -e /f/Users/akihirok/Miniconda3/ ]; then
     export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/
     export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
 fi
+
+
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+function promps() {
+
+    local  BLUE="\[\e[1;34m\]"
+    local  GREEN="\[\e[32m\]"
+    local  MAGENTA="\[\e[35m\]"
+    local  YELLOW="\[\e[33m\]"
+    local  WHITE="\[\e[00m\]"
+    local  GRAY="\[\e[1;37m\]"
+
+    case $TERM in
+        xterm*) TITLEBAR='\[\e]0;\W\007\]';;
+        *)      TITLEBAR="";;
+    esac
+
+    local BASE="\u@\h"
+    PS1="${TITLEBAR}${GREEN}${BASE}${WHITE}:${BLUE}\W${GREEN}\$(parse_git_branch)${BLUE}\$${WHITE} "
+
+}
+
+promps
+
 
 #=================================================================
 #
