@@ -79,7 +79,6 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'nelstrom/vim-visual-star-search'
 
 " Setting for fzf"
-NeoBundle '/usr/local/opt/fzf'
 NeoBundle 'junegunn/fzf.vim'
 
 "if has('nvim')
