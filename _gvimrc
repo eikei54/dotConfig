@@ -21,7 +21,7 @@ set columns=160
 set guifont=Myrica_M_for_Powerline:h10:cANSI:qDRAFT
 
 set renderoptions=type:directx
-set antialias
-
+" enable clipboard on Windows
+set clipboard=unnamed,autoselect
 colorscheme molokai
 
