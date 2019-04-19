@@ -23,4 +23,18 @@
 *.md
 *.log
 /geninclude/
+*.dba
+*.fo
+*.allsym
+*.axf
+*.txt
+*.gmap
+*.ghsym
+*.tpi
+*.lst
+*.out
+
+
+
+
 
