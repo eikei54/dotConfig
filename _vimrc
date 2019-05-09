@@ -559,6 +559,9 @@ vnoremap ? ?\v
 " <Space>y で選択行をコピー
 "vnoremap <Leader>y "y*
 
+" for python executing
+nnoremap <Leader>z :!python3 %<CR>
+
 set clipboard+=autoselect
 
 " use cliipboard
@@ -744,6 +747,10 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
+inoremap <C-f> <C-o>w
+inoremap <C-b> <C-o>b
+inoremap <C-d> <C-o>x
+
 
 " delete the part after cursor in the line
 "inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
