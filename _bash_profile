@@ -67,8 +67,12 @@ export GOPATH=/mingw64
 export PATH=$GOPATH:$PATH
 export GO15VENDOREXPERIMENT=1
 
-if [ -e /f/Users/akihirok/Miniconda3/ ]; then
-    export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/
+#if [ -e /f/Users/akihirok/Miniconda3/ ]; then
+#    export ANACONDA_HOME=/f/Users/akihirok/Miniconda3/
+#    export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
+#fi
+if [ -e /f/Users/akihirok/Anaconda3/ ]; then
+    export ANACONDA_HOME=/f/Users/akihirok/Anaconda3/
     export PATH=$ANACONDA_HOME/Scripts:$ANACONDA_HOME:$PATH
 fi
 
