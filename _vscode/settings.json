@@ -1,0 +1,90 @@
+{
+    "window.zoomLevel": -1,
+    "vim.easymotionMarkerFontSize": "10",
+    "workbench.colorTheme": "Monokai",
+    "workbench.iconTheme": "vs-minimal",
+    "editor.fontFamily": "Myrica M for Powerline",
+    "editor.fontSize": 10,
+    "editor.minimap.enabled": false,
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.mouseWheelZoom": true,
+    "breadcrumbs.enabled": true,
+    "terminal.integrated.shell.windows": "F:\\msys64\\usr\\bin\\bash.exe",
+    "terminal.integrated.shellArgs.windows": [
+        "--login"
+    ],
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.env.windows": {
+        "MSYSTEM": "MINGW64",
+        "CHERE_INVOKING": "1"
+    },
+    "terminal.integrated.fontFamily": "Myrica M for Powerline",
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.statusBarColorControl": true,
+    "vim.startInInsertMode": true,
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "vim.easymotion": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#5f0000",
+        "statusBar.noFolderBackground": "#5f0000",
+        "statusBar.debuggingBackground": "#5f0000"
+    },
+    "files.associations": {
+        // .clang-formatファイルをjsonに関連付ける
+        ".clang-format": "json",
+        // 拡張子の無いC++標準ライブラリのヘッダーをcppに関連付けする場合は以下のようにする
+        // C/C++拡張機能が勝手にワークスペース設定に反映してくれるので設定をする必要はない
+        "iostream": "cpp",
+        "cstdlib": "cpp",
+    },
+    "clang.executable": "F:\\msys64\\usr\\bin\\clang++.exe",
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
+    "C_Cpp.default.compilerPath": "F:\\msys64\\usr\\bin\\c++.exe",
+    "C_Cpp.default.includePath": [
+        "F:\\msys64\\usr\\include",
+        "F:\\msys64\\usr\\lib\\clang\\3.8.0\\include",
+        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include",
+        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++",
+        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\cilk",
+        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++\\tr1"
+    ],
+    "git.autofetch": true,
+    "debug.console.fontSize": 10,
+    "python.pythonPath": "F:\\Users\\akihirok\\Anaconda3\\python.exe",
+    "terminal.integrated.cursorBlinking": true,
+    "python.condaPath": "F:\\Users\\akihirok\\Anaconda3",
+    "sync.gist": "4b77e3ce5fb1db0f8748e410ac791854",
+    "vim.foldfix": true,
+    "window.menuBarVisibility": "default",
+    "vim.highlightedyank.enable": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.easymotionMarkerFontWeight": "bold",
+    "vim.whichwrap": "h,l,<,>,[,]",
+    "files.trimTrailingWhitespace": true,
+    "vim.insertModeKeyBindings": [
+        {
+         "before": ["<C-h>"],
+         "after": ["<LEFT>"]
+        },
+        {
+         "before": ["<C-j>"],
+         "after": ["<DOWN>"]
+        },
+        {
+         "before": ["<C-k>"],
+         "after": ["<UP>"]
+        },
+        {
+         "before": ["<C-l>"],
+         "after": ["<RIGHT>"]
+        },
+        {
+         "before": ["j", "j"],
+         "after": ["<Esc>"]
+        }
+    ],
+    "terminal.integrated.fontSize": 16
+}
