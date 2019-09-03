@@ -100,7 +100,7 @@ function promps() {
 
 }
 
-promps
+alias etl2hvs='/c/ghs/multi_716_wd020/etl2hvs.exe'
 
 
 #=================================================================
@@ -128,10 +128,10 @@ if [ "$COMSPEC" != "" ]; then
     # OS is Windows
     #echo "COMSPEC is defined, OS is Windows."
     if [ -x ctags.exe ]; then
-        aliaas ctags='ctags.exe'
+        alias ctags='ctags.exe'
     fi
     if [ -x cscope.exe ]; then
-        aliaas cscope='cscope.exe'
+        alias cscope='cscope.exe'
     fi
 fi
 
