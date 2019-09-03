@@ -27,3 +27,6 @@ ln -s ./dotConfig/_tigrc .tigrc
 ln -s ./dotConfig/_tmux.conf .tmux.conf
 ln -s ./dotConfig/_agignore .agignore
 
+# add json setting.. if possible:
+#cmd.exe "mklink %APPDATA%\Code\User\settings.json %USERPROFILE%\dotConfig\_vscode\settings.json"
+#cmd.exe "mklink %APPDATA%\Code\User\keybindings.json %USERPROFILE%\dotConfig\_vscode\keybindings.json"
