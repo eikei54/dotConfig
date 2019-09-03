@@ -5,7 +5,7 @@ Rows=45
 Transparency=off
 OpaqueWhenFocused=no
 Font=Myrica M for Powerline
-FontHeight=12
+FontHeight=10
 Term=xterm-256color
 ThemeFile=dracula
 

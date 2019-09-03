@@ -430,6 +430,8 @@ set expandtab                                    " タブの代わりに空白�
 set shiftwidth=4
 
 
+set nowrapscan
+
 "
 " https://qiita.com/itmammoth/items/312246b4b7688875d023
 "
@@ -562,7 +564,7 @@ vnoremap ? ?\v
 " for python executing
 nnoremap <Leader>z :!python3 %<CR>
 
-set clipboard+=autoselect
+set clipboard+=autoselect,unnamed
 
 " use cliipboard
 nnoremap Y "+Y
@@ -990,13 +992,15 @@ endfunction
 
 " Copy name of file being edited into clipboard
 function! g:CopyFileName()
-  let @* = expand("%:t")." L:".line('.')
+  "let @* = expand("%:t")." L:".line('.')
+  let @* = expand("%:t")
   echo @*
 endfunction
 
 " Copy folder path including file being edited into clipboard
 function! g:CopyFolderPath()
-  let @* = expand("%:p:h")."/"
+"  let @* = expand("%:p:h")."/".expand("%:t")
+  let @* = expand("%:p")
   echo @*
 endfunction
 

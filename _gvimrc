@@ -25,3 +25,8 @@ set renderoptions=type:directx
 set clipboard=unnamed,autoselect
 colorscheme molokai
 
+set nowrap
+
+autocmd GUIEnter * set transparency=235
+
+
