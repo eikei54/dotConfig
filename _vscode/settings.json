@@ -23,14 +23,14 @@
     "vim.hlsearch": true,
     "vim.leader": "<space>",
     "vim.statusBarColorControl": true,
-    "vim.startInInsertMode": true,
+    "vim.startInInsertMode": false,
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "vim.easymotion": true,
     "workbench.colorCustomizations": {
-        "statusBar.background": "#5f0000",
-        "statusBar.noFolderBackground": "#5f0000",
-        "statusBar.debuggingBackground": "#5f0000"
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
     },
     "files.associations": {
         // .clang-formatファイルをjsonに関連付ける
@@ -86,5 +86,6 @@
          "after": ["<Esc>"]
         }
     ],
-    "terminal.integrated.fontSize": 16
+    "terminal.integrated.fontSize": 16,
+    "workbench.sideBar.location": "right"
 }
