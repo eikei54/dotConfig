@@ -115,6 +115,9 @@ NeoBundle 'rhysd/accelerated-jk'
 " Easymotion
 NeoBundle 'easymotion/vim-easymotion'
 
+" Hightlight Multiple
+NeoBundle 't9md/vim-quickhl'
+
 " color scheme
 NeoBundle 'tomasr/molokai'
 NeoBundle 'altercation/vim-colors-solarized'
@@ -125,7 +128,7 @@ NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'dracula/vim'
 NeoBundle 'semibran/vim-colors-synthetic'
-NeoBundle 'ErichDonGubler/vim-sublime-monokai'
+NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'szorfein/fromthehell.vim'
 NeoBundle 'cseelus/vim-colors-tone'
 NeoBundle 'eikei54/greent.vim'
@@ -979,6 +982,34 @@ function! s:unite_my_settings()
 	nnoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 	inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 endfunction
+
+
+" ------------------------------------
+" for quickhl Setting
+" ------------------------------------
+nmap ht <Plug>(quickhl-manual-this)
+xmap ht <Plug>(quickhl-manual-this)
+nmap hm <Plug>(quickhl-manual-toggle)
+xmap hm <Plug>(quickhl-manual-toggle)
+
+nmap hr <Plug>(quickhl-manual-reset)
+xmap hr <Plug>(quickhl-manual-reset)
+
+nmap hc <Plug>(quickhl-cword-toggle)
+
+nmap h] <Plug>(quickhl-tag-toggle)
+
+map H <Plug>(operator-quickhl-manual-this-motion)
+
+" Highlight cword
+let g:quickhl_cword_enable_at_startup = 1
+
+" Highlight Keyword
+let g:quickhl_manual_enable_at_startup = 1
+let g:quickhl_manual_keywords = [
+   \ {"pattern": 'uec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
+   \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
+   \ ]
 
 " ------------------------------------
 " for Original Vim Setting
