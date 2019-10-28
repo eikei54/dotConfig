@@ -37,6 +37,7 @@ if has('vim_starting')
   set nocompatible
   set hidden
   set runtimepath+=~/.vim/bundle/neobundle.vim
+  set runtimepath+=~/.vim/after/ftplugin
 endif
 
 " neobundle.vimの初期化
@@ -543,6 +544,36 @@ let g:ctrlp_custom_ignore = {
 "" setting <Leader>key
 let mapleader = "\<Space>"
 
+"" for quickfix setting
+nnoremap [q :cprevious<CR>   " previous
+nnoremap ]q :cnext<CR>       " next
+nnoremap [Q :<C-u>cfirst<CR> " Top
+nnoremap ]Q :<C-u>clast<CR>  " Last
+
+nnoremap <F5> /IS\sCMD\sALLOWED\|QM\stask\scomplete\|uec\s\+=\s0000[1-9A-F]\{4\}
+nnoremap <S-F5> ?IS\sCMD\sALLOWED\|QM\stask\scomplete\|uec\s\+=\s0000[1-9A-F]\{4\}
+"nnoremap <F5> /opCode<CR>
+"nnoremap <S-F5> ?opCode<CR>
+
+nnoremap <S-F6> :vimgrep uec\s\+=\s0000[1-9A-F]\{4\} % <CR>
+nnoremap <F6> :vimgrep IS\sCMD\sALLOWED\|QM\stask\scomplete\|uec\s\+=\s0000[1-9A-F]\{4\} % <CR>
+
+autocmd QuickFixCmdPost *grep* cwindow
+
+
+nnoremap <S-F7> :cold<CR>
+nnoremap <S-F8> :cnew<CR>
+
+nnoremap <C-F7> :cfirst<CR>
+nnoremap <C-F8> :clast<CR>
+
+" previous
+nnoremap <F7>   :cprevious<CR>zz
+" next
+nnoremap <F8>   :cnext<CR>zz
+
+
+
 "" set very magic anytime for pattern search
 nnoremap / /\v
 nnoremap ? ?\v
@@ -681,23 +712,6 @@ inoremap <c-9> <C-o>9gt
 map <A-Right> gt
 map <A-Left> gT
 
-"" for quickfix setting
-nnoremap [q :cprevious<CR>   " previous
-nnoremap ]q :cnext<CR>       " next
-nnoremap [Q :<C-u>cfirst<CR> " Top
-nnoremap ]Q :<C-u>clast<CR>  " Last
-
-
-nnoremap <S-F7> :cold<CR>
-nnoremap <S-F8> :cnew<CR>
-
-nnoremap <C-F7> :cfirst<CR>
-nnoremap <C-F8> :clast<CR>
-
-" previous
-nnoremap <F7>   :cprevious<CR>zz
-" next
-nnoremap <F8>   :cnext<CR>zz
 
 " ----------------------------
 " ctags setting
@@ -788,10 +802,7 @@ setlocal statusline+=\ %L
 "nnoremap <buffer> p  <CR>zz<C-w>p
 
 " hook after executing QucikFixCmd in vimgrep
-augroup vimgrep_
-    autocmd!
-    autocmd QuickFixCmdPost *grep* cwindow
-augroup END
+autocmd QuickFixCmdPost grep,vimgrep,cwindow if len(getqflist()) != 0 | copen | endif
 
 " 現在のファイルパスを表示する
 nnoremap <C-g> 1<C-g>
@@ -1009,6 +1020,7 @@ let g:quickhl_manual_enable_at_startup = 1
 let g:quickhl_manual_keywords = [
    \ {"pattern": 'uec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
    \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
+   \ {"pattern": 'CE\sIS\sCMD\sALLOWED\s\+opCode\s\+', "regexp": 1 },
    \ ]
 
 " ------------------------------------
