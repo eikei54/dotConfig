@@ -1,16 +1,14 @@
 {
     "window.zoomLevel": -1,
-    "vim.easymotionMarkerFontSize": "10",
     "workbench.colorTheme": "Monokai",
     "workbench.iconTheme": "vs-minimal",
     "editor.fontFamily": "Myrica M for Powerline",
-    "editor.fontSize": 10,
     "editor.minimap.enabled": false,
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "all",
     "editor.mouseWheelZoom": true,
     "breadcrumbs.enabled": true,
-    "terminal.integrated.shell.windows": "F:\\msys64\\usr\\bin\\bash.exe",
+    "terminal.integrated.shell.windows": "D:\\msys64\\usr\\bin\\bash.exe",
     "terminal.integrated.shellArgs.windows": [
         "--login"
     ],
@@ -40,22 +38,21 @@
         "iostream": "cpp",
         "cstdlib": "cpp",
     },
-    "clang.executable": "F:\\msys64\\usr\\bin\\clang++.exe",
+    "clang.executable": "D:\\msys64\\usr\\bin\\clang++.exe",
     "C_Cpp.default.intelliSenseMode": "clang-x64",
-    "C_Cpp.default.compilerPath": "F:\\msys64\\usr\\bin\\c++.exe",
+    "C_Cpp.default.compilerPath": "D:\\msys64\\usr\\bin\\c++.exe",
     "C_Cpp.default.includePath": [
-        "F:\\msys64\\usr\\include",
-        "F:\\msys64\\usr\\lib\\clang\\3.8.0\\include",
-        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include",
-        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++",
-        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\cilk",
-        "F:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++\\tr1"
+        "D:\\msys64\\usr\\include",
+        "D:\\msys64\\usr\\lib\\clang\\3.8.0\\include",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\cilk",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++\\tr1"
     ],
     "git.autofetch": true,
-    "debug.console.fontSize": 10,
-    "python.pythonPath": "F:\\Users\\akihirok\\Anaconda3\\python.exe",
+    "python.pythonPath": "C:\\Users\\sys-JFKL-FWI-D922\\AppData\\Local\\Continuum\\anaconda3\\python.exe",
     "terminal.integrated.cursorBlinking": true,
-    "python.condaPath": "F:\\Users\\akihirok\\Anaconda3",
+    "python.condaPath": "C:\\Users\\sys-JFKL-FWI-D922\\AppData\\Local\\Continuum\\anaconda3",
     "sync.gist": "4b77e3ce5fb1db0f8748e410ac791854",
     "vim.foldfix": true,
     "window.menuBarVisibility": "default",
@@ -64,6 +61,16 @@
     "vim.easymotionMarkerFontWeight": "bold",
     "vim.whichwrap": "h,l,<,>,[,]",
     "files.trimTrailingWhitespace": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<leader>", "d"],
+          "after": ["d", "d"]
+        },
+        {
+          "before": ["<C-n>"],
+          "after": ["s", "t"]
+        }
+    ],
     "vim.insertModeKeyBindings": [
         {
          "before": ["<C-h>"],
@@ -86,6 +93,8 @@
          "after": ["<Esc>"]
         }
     ],
+    "workbench.sideBar.location": "right",
     "terminal.integrated.fontSize": 16,
-    "workbench.sideBar.location": "right"
+    "debug.console.fontSize": 16,
+    "C_Cpp.updateChannel": "Insiders"
 }
