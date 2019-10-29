@@ -609,8 +609,8 @@ nnoremap Y "+Y
 "map <Leader>i gg=<S-g><C-o><C-o>zz
 
 "" highlight the current word withoug moving the cursor
-nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-"nnoremap * *``
+"nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -1005,19 +1005,20 @@ endfunction
 " ------------------------------------
 " for quickhl Setting
 " ------------------------------------
-nmap ht <Plug>(quickhl-manual-this)
-xmap ht <Plug>(quickhl-manual-this)
-nmap hm <Plug>(quickhl-manual-toggle)
-xmap hm <Plug>(quickhl-manual-toggle)
+nmap <Leader>ht <Plug>(quickhl-manual-this)
+xmap <Leader>ht <Plug>(quickhl-manual-this)
+nmap <Leader>hm <Plug>(quickhl-manual-toggle)
+xmap <Leader>hm <Plug>(quickhl-manual-toggle)
 
-nmap hr <Plug>(quickhl-manual-reset)
-xmap hr <Plug>(quickhl-manual-reset)
+nmap <Leader>hr <Plug>(quickhl-manual-reset)
+xmap <Leader>hr <Plug>(quickhl-manual-reset)
 
-nmap hc <Plug>(quickhl-cword-toggle)
+nmap <Leader>hc <Plug>(quickhl-cword-toggle)
+"
+nmap <Leader>h] <Plug>(quickhl-tag-toggle)
 
-nmap h] <Plug>(quickhl-tag-toggle)
+map <Leader>H <Plug>(operator-quickhl-manual-this-motion)
 
-map H <Plug>(operator-quickhl-manual-this-motion)
 
 " Highlight cword
 let g:quickhl_cword_enable_at_startup = 1
