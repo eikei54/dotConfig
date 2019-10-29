@@ -81,6 +81,8 @@ NeoBundle 'nelstrom/vim-visual-star-search'
 
 " Setting for fzf"
 NeoBundle 'junegunn/fzf.vim'
+" Setting for fzf"
+NeoBundle 'jremmen/vim-ripgrep'
 
 "if has('nvim')
 "  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -550,13 +552,13 @@ nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
 
-nnoremap <F5> /IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
-nnoremap <S-F5> ?IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
+nnoremap <F5> /Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
+nnoremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
 "nnoremap <F5> /opCode<CR>
 "nnoremap <S-F5> ?opCode<CR>
 
 nnoremap <S-F6> :vimgrep \cuec\s\+=\s0000[1-9A-F]\{4\} %<CR>
-nnoremap <F6> :vimgrep IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\} % <CR>
+nnoremap <F6> :vimgrep Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\} % <CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -809,16 +811,21 @@ nnoremap <C-g> 1<C-g>
 
 "" grep for file set
 
-set grepprg=ag\ -n\ -iS
+"set grepprg=ag\ -n\ -iS
 
-if has("win32")
-    " Windows環境用のコード
-    "grep.vim用にGitbashのgrepにパスを通す"
-    let Grep_Path = 'C:\tools\bin_win32\grep.exe'
-    let Grep_Xargs_Path = 'C:\tools\bin_win32\xargs.exe'
-    let Grep_Find_Path = 'C:\tools\bin_win32\find.exe'
-    let Grep_Shell_Quote_Char = '"'
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+
+"if has("win32")
+"    " Windows環境用のコード
+"    "grep.vim用にGitbashのgrepにパスを通す"
+"    let Grep_Path = 'C:\tools\bin_win32\grep.exe'
+"    let Grep_Xargs_Path = 'C:\tools\bin_win32\xargs.exe'
+"    let Grep_Find_Path = 'C:\tools\bin_win32\find.exe'
+"    let Grep_Shell_Quote_Char = '"'
+"endif
 
 ""let g:Grep_Default_Filelist = '*.cpp *.ipp *.c *.hpp *.h *hh *.spp *.tcl *.dao *.dat *.mak *.seq *.cmake *.txt'
 let Grep_Skip_Dirs = '.svn'
@@ -1018,9 +1025,10 @@ let g:quickhl_cword_enable_at_startup = 1
 " Highlight Keyword
 let g:quickhl_manual_enable_at_startup = 1
 let g:quickhl_manual_keywords = [
-   \ {"pattern": '[uU]ec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
+   \ {"pattern": '\uec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
    \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 2 },
    \ {"pattern": 'CE\sIS\sCMD\sALLOWED\s\+opCode\s\+', "regexp": 3 },
+   \ {"pattern": 'QM\stask\scomplete', "regexp": 4 },
    \ ]
 
 " ------------------------------------
