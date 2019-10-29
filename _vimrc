@@ -550,13 +550,13 @@ nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
 
-nnoremap <F5> /IS\sCMD\sALLOWED\|QM\stask\scomplete\|uec\s\+=\s0000[1-9A-F]\{4\}
-nnoremap <S-F5> ?IS\sCMD\sALLOWED\|QM\stask\scomplete\|uec\s\+=\s0000[1-9A-F]\{4\}
+nnoremap <F5> /IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
+nnoremap <S-F5> ?IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
 "nnoremap <F5> /opCode<CR>
 "nnoremap <S-F5> ?opCode<CR>
 
-nnoremap <S-F6> :vimgrep uec\s\+=\s0000[1-9A-F]\{4\} % <CR>
-nnoremap <F6> :vimgrep IS\sCMD\sALLOWED\|QM\stask\scomplete\|uec\s\+=\s0000[1-9A-F]\{4\} % <CR>
+nnoremap <S-F6> :vimgrep \cuec\s\+=\s0000[1-9A-F]\{4\} %<CR>
+nnoremap <F6> :vimgrep IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\} % <CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -1018,9 +1018,9 @@ let g:quickhl_cword_enable_at_startup = 1
 " Highlight Keyword
 let g:quickhl_manual_enable_at_startup = 1
 let g:quickhl_manual_keywords = [
-   \ {"pattern": 'uec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
-   \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
-   \ {"pattern": 'CE\sIS\sCMD\sALLOWED\s\+opCode\s\+', "regexp": 1 },
+   \ {"pattern": '[uU]ec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
+   \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 2 },
+   \ {"pattern": 'CE\sIS\sCMD\sALLOWED\s\+opCode\s\+', "regexp": 3 },
    \ ]
 
 " ------------------------------------
