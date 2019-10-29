@@ -27,7 +27,7 @@
 [user]
 	useConfigOnly = true
 	email = Akihiro.Kamimura@wdc.com
-	name = Akihiro Kamimura
+	name = AkihiroKamimura
 [core]
 	safecrlf = warn
 	editor = vim

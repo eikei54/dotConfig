@@ -6,7 +6,7 @@ Transparency=off
 OpaqueWhenFocused=no
 Font=Myrica M for Powerline
 FontHeight=10
-Term=xterm-256color
+Term=xterm
 ThemeFile=dracula
 
 DeleteSendsDEL=yes
@@ -38,6 +38,6 @@ FontSmoothing=full
 #White=248,248,242
 #BoldWhite=249,248,245
 
-Locale=ja_JP
+Locale=C
 Charset=UTF-8
 CursorType=line
