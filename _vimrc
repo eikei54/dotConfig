@@ -443,7 +443,7 @@ set nowrapscan
 "
 
 " hilight the keyword under the cursor
-nnoremap <silent> <Space>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+"nnoremap <silent> <Space>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 " fix the typo
 inoremap <C-t> <Esc><Left>"zx"zpa
 
@@ -537,9 +537,16 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|inc)$',
   \ 'link': 'some_bad_symbolic_links',
-  \ }
+  \}
 
+" ------ const ------------------
 
+let s:pat_etm_01 = "Initiator_Opcode \= [0-9A-F]{8}"
+let s:pat_etm_02 = "(CE )\@<!IS (ATA )?CMD ALLOWED"
+let s:pat_etm_03 = "QM\stask\scomplete"
+let s:pat_etm_04 = "\cuec\s\+=\s0000[1-9A-F]\{4\}"
+
+let s:pat_etm_99 = s:pat_etm_01."<Bslash><Bar>".s:pat_etm_02."<Bslash><Bar>".s:pat_etm_03."<Bslash><Bar>".s:pat_etm_04
 
 " ------ Key Setting ------------
 
@@ -552,13 +559,18 @@ nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
 
-nnoremap <F5> /Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
-nnoremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
+"nnoremap <F3> /\vInitiator_Opcode \= [0-9A-F]{8}<CR>
+exe "nnoremap <F3> /\v".s:pat_etm_02."<CR>"
+"nnoremap <F3> /\vInitiator_Opcode \= [0-9A-F]{8}<CR>
+
+nnoremap <F5> /Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
+noremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
+
 "nnoremap <F5> /opCode<CR>
 "nnoremap <S-F5> ?opCode<CR>
 
 nnoremap <S-F6> :vimgrep \cuec\s\+=\s0000[1-9A-F]\{4\} %<CR>
-nnoremap <F6> :vimgrep Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\} % <CR>
+nnoremap <F6> :vimgrep Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\} %<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -610,7 +622,7 @@ nnoremap Y "+Y
 
 "" highlight the current word withoug moving the cursor
 "nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-nnoremap * *``
+"nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -1026,10 +1038,11 @@ let g:quickhl_cword_enable_at_startup = 1
 " Highlight Keyword
 let g:quickhl_manual_enable_at_startup = 1
 let g:quickhl_manual_keywords = [
-   \ {"pattern": '\uec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
-   \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 2 },
-   \ {"pattern": 'CE\sIS\sCMD\sALLOWED\s\+opCode\s\+', "regexp": 3 },
-   \ {"pattern": 'QM\stask\scomplete', "regexp": 4 },
+   \ {"pattern": '\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED\s\(EXIT\s\)\?', "regexp": 1 },
+   \ {"pattern": 'QM\stask\scomplete', "regexp": 2 },
+   \ {"pattern": '\cuec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 3 },
+   \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 4 },
+   \ {"pattern": '\sopCode\(PlusATA\)\?\s+\=\s0000[1-9A-F]\{4\}', "regexp": 5 },
    \ ]
 
 " ------------------------------------
