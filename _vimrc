@@ -559,6 +559,9 @@ nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
 
+nnoremap <F2> :source $MYVIMRC<CR>:source $MYGVIMRC<CR>
+"nnoremap <S-F2> :source $MYVIMRC
+
 "nnoremap <F3> /\vInitiator_Opcode \= [0-9A-F]{8}<CR>
 exe "nnoremap <F3> /\v".s:pat_etm_02."<CR>"
 "nnoremap <F3> /\vInitiator_Opcode \= [0-9A-F]{8}<CR>
@@ -621,7 +624,8 @@ nnoremap Y "+Y
 "map <Leader>i gg=<S-g><C-o><C-o>zz
 
 "" highlight the current word withoug moving the cursor
-"nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap <silent> hr :noh<CR>
+nnoremap <silent> hc "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 "nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
