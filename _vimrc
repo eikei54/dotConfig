@@ -1,4 +1,4 @@
-﻿
+
 "https://github.com/sonatard/color-theme-molokai
 
 let $LANG='ja_JP.UTF-8'
@@ -47,7 +47,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " 読み込むプラグインを記載
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
+"NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'scrooloose/nerdtree'
@@ -127,7 +127,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'scwood/vim-hybrid'
-NeoBundle 'aereal/vim-colors-japanesque'
+NeoBundle 'vim-scripts/oceanlight'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'dracula/vim'
 NeoBundle 'semibran/vim-colors-synthetic'
@@ -137,6 +137,20 @@ NeoBundle 'cseelus/vim-colors-tone'
 NeoBundle 'eikei54/greent.vim'
 NeoBundle 'rudrab/vim-coogle'
 NeoBundle 'koirand/tokyo-metro.vim'
+
+
+"
+" vim-deoplete
+"
+"
+if has('nvim')
+  NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  NeoBundle 'Shougo/deoplete.nvim'
+  NeoBundle 'roxma/nvim-yarp'
+  NeoBundle 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 "
 " vim-clang
@@ -481,6 +495,7 @@ set complete=.,b,u,t,w,]
 
 " Keyword list
 set complete+=k~/.vim/keywords.txt
+set dictionary=k~/.vim/dict/words
 
 "
 " ------ Tab completion  ------
