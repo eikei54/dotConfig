@@ -566,8 +566,9 @@ nnoremap <F2> :source $MYVIMRC<CR>:source $MYGVIMRC<CR>
 exe "nnoremap <F3> /\v".s:pat_etm_02."<CR>"
 "nnoremap <F3> /\vInitiator_Opcode \= [0-9A-F]{8}<CR>
 
-nnoremap <F5> /Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
-noremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
+nnoremap <F5> /Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\}<CR>
+nnoremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\}<CR>
+"nnoremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
 
 "nnoremap <F5> /opCode<CR>
 "nnoremap <S-F5> ?opCode<CR>
@@ -1046,7 +1047,8 @@ let g:quickhl_manual_keywords = [
    \ {"pattern": 'QM\stask\scomplete', "regexp": 2 },
    \ {"pattern": '\cuec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 3 },
    \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 4 },
-   \ {"pattern": '\sopCode\(PlusATA\)\?\s+\=\s0000[1-9A-F]\{4\}', "regexp": 5 },
+   \ {"pattern": 'ShowStopCode\s\+=\s[-1-9A-F]\{8\}', "regexp": 5 },
+   \ {"pattern": '\(Initiator_\)\?\cop\ccode\(PlusATA\)\?\s\+=\s[0-9A-F]\{8\}', "regexp": 6 },
    \ ]
 
 " ------------------------------------
