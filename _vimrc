@@ -568,13 +568,16 @@ exe "nnoremap <F3> /\v".s:pat_etm_02."<CR>"
 
 nnoremap <F5> /Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\}<CR>
 nnoremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\}<CR>
+nnoremap <C-F5> /\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\}<CR>
 "nnoremap <S-F5> ?Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
 
 "nnoremap <F5> /opCode<CR>
 "nnoremap <S-F5> ?opCode<CR>
 
+"nnoremap <F6> :vimgrep Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\} %<CR>
+nnoremap <F6> :vimgrep Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\}<Bslash><Bar>HI\sofb\ssend %<CR>
 nnoremap <S-F6> :vimgrep \cuec\s\+=\s0000[1-9A-F]\{4\} %<CR>
-nnoremap <F6> :vimgrep Initiator_Opcode\s=\s[0-9A-F]\{8\}<Bslash><Bar>\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\} %<CR>
+nnoremap <C-F6> ?\cuec\s\+=\s0000[1-9A-F]\{4\}<Bslash><Bar>ShowStopCode\s\+=\s[0-9A-F]\{8\}<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -625,8 +628,8 @@ nnoremap Y "+Y
 "map <Leader>i gg=<S-g><C-o><C-o>zz
 
 "" highlight the current word withoug moving the cursor
-nnoremap <silent> hr :noh<CR>
-nnoremap <silent> hc "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap <silent> <leader>hn :noh<CR>
+nnoremap <silent> <leader>hw "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 "nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
@@ -1017,6 +1020,9 @@ function! s:unite_my_settings()
 	nnoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 	inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 endfunction
+
+" Added for memod ETM analysis
+nnoremap <silent> <Leader>pl O..................<ESC>
 
 
 " ------------------------------------
