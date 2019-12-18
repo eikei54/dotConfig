@@ -30,8 +30,8 @@ set guifont=Myrica_M_for_Powerline:h10:cANSI:qDRAFT
 set renderoptions=type:directx
 " enable clipboard on Windows
 set clipboard=unnamed,autoselect
-"colorscheme molokai
-colorscheme dracula
+colorscheme molokai
+"colorscheme dracula
 
 set nowrap
 

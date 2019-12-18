@@ -38,6 +38,6 @@ FontSmoothing=full
 #White=248,248,242
 #BoldWhite=249,248,245
 
-Locale=C
+Locale=en_US
 Charset=UTF-8
 CursorType=line
