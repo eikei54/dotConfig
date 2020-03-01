@@ -7,7 +7,7 @@
     "editor.renderWhitespace": "all",
     "editor.mouseWheelZoom": true,
     "breadcrumbs.enabled": true,
-    "terminal.integrated.shell.windows": "D:\\msys64\\usr\\bin\\bash.exe",
+    "terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe",
     "terminal.integrated.shellArgs.windows": [
         "--login"
     ],
@@ -30,30 +30,31 @@
         "iostream": "cpp",
         "cstdlib": "cpp",
     },
-    "clang.executable": "D:\\msys64\\usr\\bin\\clang++.exe",
+    "clang.executable": "C:\\msys64\\usr\\bin\\clang++.exe",
     "C_Cpp.default.intelliSenseMode": "clang-x64",
-    "C_Cpp.default.compilerPath": "D:\\msys64\\usr\\bin\\c++.exe",
+    "C_Cpp.default.compilerPath": "C:\\msys64\\usr\\bin\\c++.exe",
     "C_Cpp.default.includePath": [
-        "D:\\msys64\\usr\\include",
-        "D:\\msys64\\usr\\lib\\clang\\3.8.0\\include",
-        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include",
-        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++",
-        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\cilk",
-        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++\\tr1"
+        "C:\\msys64\\usr\\include",
+        "C:\\msys64\\usr\\lib\\clang\\3.8.0\\include",
+        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include",
+        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++",
+        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\cilk",
+        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++\\tr1"
     ],
     "git.autofetch": true,
-    "python.pythonPath": "C:\\Users\\sys-JFKL-FWI-D922\\AppData\\Local\\Continuum\\anaconda3\\python.exe",
+    "python.pythonPath": "$HOME\\AppData\\Local\\Continuum\\anaconda3\\python.exe",
     "terminal.integrated.cursorBlinking": true,
-    "python.condaPath": "C:\\Users\\sys-JFKL-FWI-D922\\AppData\\Local\\Continuum\\anaconda3",
+    "python.condaPath": "$HOME\\AppData\\Local\\Continuum\\anaconda3",
     "sync.gist": "4b77e3ce5fb1db0f8748e410ac791854",
     "vim.foldfix": true,
     "window.menuBarVisibility": "default",
-    "vim.highlightedyank.enable": true,
-    "vim.camelCaseMotion.enable": true,
-    "vim.useSystemClipboard": true,
     "vim.easymotion": true,
     "vim.easymotionMarkerFontWeight": "bold",
+    "vim.highlightedyank.enable": true,
+    "vim.hlsearch": true,
+    "vim.camelCaseMotion.enable": true,
     "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
     "vim.whichwrap": "h,l,<,>,[,]",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -112,6 +113,16 @@
         "test/": true
     },
     "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+    "python.formatting.autopep8Args": [
+        "--indent-size=2",
+        "--ignore=E402"
+    ]
+    "[python]": {
+        "editor.tabSize": 2,                      // indent level to 2
+        "editor.formatOnSave": true,              // at saving, format
+        "editor.formatOnPaste": false,            // don't format on paste
+        "editor.formatOnType": false,             // don't format on typing
+    },
     "editor.fontSize": 15,
     "window.zoomLevel": 0.1,
     "cmake.configureOnOpen": false,
