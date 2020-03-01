@@ -1,7 +1,6 @@
 {
-    "window.zoomLevel": -1,
-    "workbench.colorTheme": "Monokai",
-    "workbench.iconTheme": "vs-minimal",
+    "workbench.colorTheme": "Isotope (rainglow)",
+    "workbench.iconTheme": "vscode-icons",
     "editor.fontFamily": "Myrica M for Powerline",
     "editor.minimap.enabled": false,
     "editor.renderControlCharacters": true,
@@ -18,13 +17,6 @@
         "CHERE_INVOKING": "1"
     },
     "terminal.integrated.fontFamily": "Myrica M for Powerline",
-    "vim.hlsearch": true,
-    "vim.leader": "<space>",
-    "vim.statusBarColorControl": true,
-    "vim.startInInsertMode": false,
-    "vim.useSystemClipboard": true,
-    "vim.visualstar": true,
-    "vim.easymotion": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
@@ -58,17 +50,29 @@
     "window.menuBarVisibility": "default",
     "vim.highlightedyank.enable": true,
     "vim.camelCaseMotion.enable": true,
+    "vim.useSystemClipboard": true,
+    "vim.easymotion": true,
     "vim.easymotionMarkerFontWeight": "bold",
+    "vim.leader": "<space>",
     "vim.whichwrap": "h,l,<,>,[,]",
-    "files.trimTrailingWhitespace": true,
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-e>"],
+            "after": [],
+            "commands": [
+                { "command": "workbench.action.toggleSidebarVisibility" }
+            ]
+        },
         {
           "before": ["<leader>", "d"],
           "after": ["d", "d"]
         },
         {
-          "before": ["<C-n>"],
-          "after": ["s", "t"]
+            "before": ["<leader>", "p"],
+            "after": [],
+            "commands": [
+                { "command": "workbench.action.quickOpen" }
+            ]
         }
     ],
     "vim.insertModeKeyBindings": [
@@ -93,8 +97,27 @@
          "after": ["<Esc>"]
         }
     ],
-    "workbench.sideBar.location": "right",
     "terminal.integrated.fontSize": 16,
     "debug.console.fontSize": 16,
-    "C_Cpp.updateChannel": "Insiders"
+    "C_Cpp.updateChannel": "Insiders",
+    "editor.minimap.side": "left",
+    "git.confirmSync": false,
+    "gitlens.sortBranchesBy": "date:desc",
+    "gitlens.sortTagsBy": "date:desc",
+    "gitlens.defaultDateSource": "committed",
+    "gitlens.defaultDateStyle": "absolute",
+    "search.exclude": {
+        "{**/code.fo,**/code.allsym, **/tags, **/*.txt}": true,
+        "doc/": true,
+        "test/": true
+    },
+    "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+    "editor.fontSize": 15,
+    "window.zoomLevel": 0.1,
+    "cmake.configureOnOpen": false,
+    "window.openFilesInNewWindow": "on",
+    "editor.tabCompletion": "on",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": false,
+    "vsicons.dontShowNewVersionMessage": true
 }
