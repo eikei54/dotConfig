@@ -1,0 +1,66 @@
+
+
+
+"
+"
+" Common Setting with normal vim
+"
+"
+
+
+set hlsearch                                     " サーチ：検索語をハイライトする
+set incsearch                                    " サーチ：インクリメンタルサーチ（検索中に文字を打つと自動で検索していく）
+set ignorecase                                   " サーチ：大文字小文字を区別しない
+set smartcase                                    " サーチ：大文字で検索されたら対象を大文字限定にする
+
+
+set showcmd                                      " ステータスラインにコマンドを表示
+
+set showmatch                                    " カーソル：括弧にカーソルを合わせた時、対応した括弧を表示する
+
+"行を跨いで移動出来る様にする
+set whichwrap=b,s,h,l,[,],<,>
+
+
+"
+"
+" Unique Setting for Idea
+"
+"
+
+set surround
+
+
+
+
+"
+"
+" Common Setting with normal vim
+"
+"
+
+cnoremap { {}<Left>
+cnoremap [ []<Left>
+cnoremap ( ()<Left>
+cnoremap " ""<Left>
+cnoremap ' ''<Left>
+cnoremap < <><Left>
+
+
+"
+"
+" Unique keymap for idea
+"
+"
+nnoremap <Space><Space> :<C-u>action AceAction<CR>
+
+" Find
+nnoremap / :<C-u>action Find<CR>
+
+" Jump to latest changing part
+nnoremap g; :<C-u>action JumpToLastChange<CR>
+nnoremap g, :<C-u>action JumpToNextChange<CR>
+
+" Close all tabs without current opened tab
+nnoremap <C-w>o :<C-u>action CloseAllEditorsButActive<CR>
+
