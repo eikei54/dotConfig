@@ -640,8 +640,8 @@ nnoremap <Leader>o :nohlsearch<CR>
 map <C-m> `.
 
 " j/kによる移動を速くする (need plugin 'accelerated-jk' )
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
+"nmap j <Plug>(accelerated_jk_gj)
+"nmap k <Plug>(accelerated_jk_gk)
 
 " acceralate to move in vim
 nnoremap <S-h> ^
@@ -734,6 +734,57 @@ inoremap <c-9> <C-o>9gt
 map <A-Right> gt
 map <A-Left> gT
 
+" ----------------------------
+" input mode setting
+" ----------------------------
+"" back to command mode by pushing j key twice
+inoremap <silent> jj <ESC>
+
+""inoremap { {}<Left>
+""inoremap [ []<Left>
+""inoremap ( ()<Left>
+""inoremap " ""<Left>
+""inoremap ' ''<Left>
+""inoremap < <><Left>
+""
+""cnoremap { {}<Left>
+""cnoremap [ []<Left>
+""cnoremap ( ()<Left>
+""cnoremap " ""<Left>
+""cnoremap ' ''<Left>
+""cnoremap < <><Left>
+
+inoremap <C-e> <END>
+inoremap <C-a> <HOME>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-f> <C-o>w
+inoremap <C-b> <C-o>b
+inoremap <C-d> <C-o>x
+
+
+" delete the part after cursor in the line
+"inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
+
+" navigation in command line
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-d> <Delete>
+cnoremap <C-j> <Left>
+cnoremap <C-l> <Right>
+cnoremap <A-f> <C-Right>
+cnoremap <A-b> <C-Left>
+" delete the part after cursor in the line
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+"" Default keymap in Vim
+"cnoremap <C-f> <Right>
+"cnoremap <C-n> <Down>
+"cnoremap <C-p> <Up>
+"cnoremap <C-e> <End>
+
 
 " ----------------------------
 " ctags setting
@@ -769,49 +820,7 @@ nnoremap <F4> :call UpdateTags()
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
-" ----------------------------
-" input mode setting
-" ----------------------------
-"" back to command mode by pushing j key twice
-inoremap <silent> jj <ESC>
 
-cnoremap { {}<Left>
-cnoremap [ []<Left>
-cnoremap ( ()<Left>
-cnoremap " ""<Left>
-cnoremap ' ''<Left>
-cnoremap <> <><Left>
-
-inoremap <C-e> <END>
-inoremap <C-a> <HOME>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-inoremap <C-f> <C-o>w
-inoremap <C-b> <C-o>b
-inoremap <C-d> <C-o>x
-
-
-" delete the part after cursor in the line
-"inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
-
-" navigation in command line
-cnoremap <C-a> <Home>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <C-d> <Delete>
-cnoremap <C-j> <Left>
-cnoremap <C-l> <Right>
-cnoremap <A-f> <C-Right>
-cnoremap <A-b> <C-Left>
-" delete the part after cursor in the line
-cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
-"" Default keymap in Vim
-"cnoremap <C-f> <Right>
-"cnoremap <C-n> <Down>
-"cnoremap <C-p> <Up>
-"cnoremap <C-e> <End>
 
 " -----------------------------
 " Quick Fix setting
