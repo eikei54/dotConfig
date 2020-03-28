@@ -76,6 +76,7 @@ NeoBundle 'google/vim-searchindex'
 " Display diffs in Vim
 NeoBundle 'airblade/vim-gitgutter'
 
+
 " Search words selected part in visual mode.
 NeoBundle 'nelstrom/vim-visual-star-search'
 
@@ -1080,6 +1081,16 @@ let g:quickhl_manual_keywords = [
    \ {"pattern": 'ShowStopCode\s\+=\s[-1-9A-F]\{8\}', "regexp": 5 },
    \ {"pattern": '\(Initiator_\)\?\cop\ccode\(PlusATA\)\?\s\+=\s[0-9A-F]\{8\}', "regexp": 6 },
    \ ]
+
+
+" ------------------------------------
+" for git gutter
+" ------------------------------------
+if has("win32") || has("x86_64")
+    let g:gitgutter_git_executable = 'D:\Program Files\Git\bin\git.exe'
+elseif has("unix")
+    let g:gitgutter_git_executable = '/usr/bin/git'
+endif
 
 " ------------------------------------
 " for Original Vim Setting
