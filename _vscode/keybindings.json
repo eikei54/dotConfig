@@ -73,5 +73,13 @@
         "key": "j",
         "command": "-list.focusDown",
         "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+f9",
+        "command": "python.datascience.notebookeditor.runallcells"
+    },
+    {
+        "key": "ctrl+f6",
+        "command": "notebook.inspectLayout"
     }
 ]

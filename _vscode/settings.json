@@ -1,13 +1,12 @@
 {
-    "workbench.colorTheme": "Isotope (rainglow)",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Monokai",
     "editor.fontFamily": "Myrica M for Powerline",
     "editor.minimap.enabled": false,
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "all",
     "editor.mouseWheelZoom": true,
     "breadcrumbs.enabled": true,
-    "terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
     "terminal.integrated.shellArgs.windows": [
         "--login"
     ],
@@ -18,9 +17,10 @@
     },
     "terminal.integrated.fontFamily": "Myrica M for Powerline",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
+        "statusBar.background": "#14161C",
+        "statusBar.noFolderBackground": "#14161C",
+        "statusBar.debuggingBackground": "#14161C",
+        "statusBar.foreground": "#DF71FB"
     },
     "files.associations": {
         // .clang-formatファイルをjsonに関連付ける
@@ -30,32 +30,46 @@
         "iostream": "cpp",
         "cstdlib": "cpp",
     },
-    "clang.executable": "C:\\msys64\\usr\\bin\\clang++.exe",
+    "clang.executable": "D:\\msys64\\usr\\bin\\clang++.exe",
     "C_Cpp.default.intelliSenseMode": "clang-x64",
-    "C_Cpp.default.compilerPath": "C:\\msys64\\usr\\bin\\c++.exe",
+    "C_Cpp.default.compilerPath": "D:\\msys64\\usr\\bin\\c++.exe",
     "C_Cpp.default.includePath": [
-        "C:\\msys64\\usr\\include",
-        "C:\\msys64\\usr\\lib\\clang\\3.8.0\\include",
-        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include",
-        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++",
-        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\cilk",
-        "C:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++\\tr1"
+        "D:\\msys64\\usr\\include",
+        "D:\\msys64\\usr\\lib\\clang\\3.8.0\\include",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\cilk",
+        "D:\\msys64\\usr\\lib\\gcc\\x86_64-pc-msys\\7.3.0\\include\\c++\\tr1"
     ],
+    "git.path": "D:\\Program Files\\Git\\bin\\git.exe",
     "git.autofetch": true,
-    "python.pythonPath": "$HOME\\AppData\\Local\\Continuum\\anaconda3\\python.exe",
+    "python.pythonPath": "D:\\Users\\Akihirok\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
     "terminal.integrated.cursorBlinking": true,
     "python.condaPath": "$HOME\\AppData\\Local\\Continuum\\anaconda3",
     "sync.gist": "4b77e3ce5fb1db0f8748e410ac791854",
     "vim.foldfix": true,
     "window.menuBarVisibility": "default",
     "vim.easymotion": true,
+    "vim.easymotionKeys": "sdfghjkl",
     "vim.easymotionMarkerFontWeight": "bold",
     "vim.highlightedyank.enable": true,
     "vim.hlsearch": true,
     "vim.camelCaseMotion.enable": true,
-    "vim.leader": "<space>",
+    "vim.leader": "<Space>",
     "vim.useSystemClipboard": true,
     "vim.whichwrap": "h,l,<,>,[,]",
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": ["#14161C", "#DF71FB"],
+    "vim.statusBarColors.insert": ["#14161C", "#50FA7B"],
+    "vim.statusBarColors.visual": ["#14161C", "#FCF404"],
+    "vim.statusBarColors.visualline": ["#14161C", "#FEC5E5"],
+    "vim.statusBarColors.visualblock": ["#14161C", "#00F9FF"],
+    "vim.statusBarColors.replace": ["#14161C", "#D08770"],
+    "vim.statusBarColors.commandlineinprogress": ["#14161C", "#007ACC"],
+    "vim.statusBarColors.searchinprogressmode": ["#14161C", "#007ACC"],
+    "vim.statusBarColors.easymotionmode": ["#14161C", "#007ACC"],
+    "vim.statusBarColors.easymotioninputmode": ["#14161C", "#007ACC"],
+    "vim.statusBarColors.surroundinputmode": ["#14161C", "#007ACC"],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<C-e>"],
@@ -96,7 +110,15 @@
         {
          "before": ["j", "j"],
          "after": ["<Esc>"]
-        }
+        },
+        {
+         "before": ["<C-a>"],
+         "after": ["<esc>", "0", "i"]
+        },
+        {
+         "before": ["<C-e>"],
+         "after": ["<esc>", "$", "a"]
+        }, 
     ],
     "terminal.integrated.fontSize": 16,
     "debug.console.fontSize": 16,
@@ -114,21 +136,35 @@
     },
     "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
     "python.formatting.autopep8Args": [
-        "--indent-size=2",
-        "--ignore=E402"
-    ]
+        "--indent-size=4",
+        "--ignore=E402",
+    ],
+    "[markdown]": {
+        "editor.tabSize": 4,                      // indent level to 4
+        "editor.formatOnSave": true,              // at saving, format
+        "editor.formatOnPaste": false,            // don't format on paste
+        "editor.formatOnType": false,             // don't format on typing
+    },
     "[python]": {
-        "editor.tabSize": 2,                      // indent level to 2
+        "editor.tabSize": 4,                      // indent level to 4
         "editor.formatOnSave": true,              // at saving, format
         "editor.formatOnPaste": false,            // don't format on paste
         "editor.formatOnType": false,             // don't format on typing
     },
     "editor.fontSize": 15,
-    "window.zoomLevel": 0.1,
+    "window.zoomLevel": -1,
     "cmake.configureOnOpen": false,
     "window.openFilesInNewWindow": "on",
     "editor.tabCompletion": "on",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.enablePreview": false,
-    "vsicons.dontShowNewVersionMessage": true
+    "vsicons.dontShowNewVersionMessage": true,
+    "python.dataScience.askForKernelRestart": false,
+    "python.dataScience.sendSelectionToInteractiveWindow": false,
+    "gitlens.gitCommands.closeOnFocusOut": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "python.languageServer": "Microsoft",
+    "workbench.iconTheme": "vscode-icons"
 }
