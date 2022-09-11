@@ -6,6 +6,11 @@
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
         "key": "ctrl+down",
         "command": "-selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
@@ -18,11 +23,6 @@
     {
         "key": "ctrl+pagedown",
         "command": "-selectNextPageSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
@@ -41,45 +41,118 @@
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
-        "key": "ctrl+left",
+        "key": "ctrl+w s",
         "command": "workbench.action.switchWindow"
     },
     {
-        "key": "ctrl+w+h",
+        "key": "ctrl+w h",
         "command": "workbench.action.focusSideBar",
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+w+j",
+        "key": "ctrl+w j",
+        "command": "workbench.action.focusBelowGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+w k",
+        "command": "workbench.action.focusAboveGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+w t",
         "command": "workbench.action.terminal.focus",
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+w+l",
+        "key": "ctrl+w n",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+w p",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+w k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor",
+        "when": "filesExplorerFocus"
+    },
+    {
+        "key": "ctrl+w l",
         "command": "workbench.action.focusFirstEditorGroup",
         "when": "filesExplorerFocus"
     },
     {
-        "key": "ctrl+w+k",
+        "key": "ctrl+w l",
         "command": "workbench.action.focusFirstEditorGroup",
-        "when": "terminalFocus"
+        "when": "listFocus && !inputFocus"
     },
     {
-        "key": "ctrl+j",
-        "command": "list.focusDown",
+        "key": "ctrl+w j",
+        "command": "workbench.action.nextPanelView",
+        "when": "panelFocus"
+    },
+    {
+        "key": "ctrl+w k",
+        "command": "workbench.action.previousPanelView",
+        "when": "panelFocus"
+    },
+    {
+        "key": "k",
+        "command": "list.focusUp",
         "when": "listFocus && !inputFocus"
     },
     {
         "key": "j",
-        "command": "-list.focusDown",
+        "command": "list.focusDown",
+        "when": "listFocus && !inputFocus"
+    },
+    // Close Folder in Treeview
+    {
+        "key": "x",
+        "command": "list.collapse",
+        "when": "listFocus && !inputFocus"
+    },
+    // Open Folder in Treeview
+    {
+        "key": "o",
+        "command": "list.expand",
         "when": "listFocus && !inputFocus"
     },
     {
         "key": "ctrl+f9",
-        "command": "python.datascience.notebookeditor.runallcells"
+        "command": "jupyter.runallcells"
     },
     {
         "key": "ctrl+f6",
         "command": "notebook.inspectLayout"
-    }
+    },
+    // jupyter config
+    {
+        "key": "ctrl+c",
+        "command": "notebook.cell.focusOutOutput",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "ipynb.newUntitledIpynb",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "m a",
+        "command": "notebook.cell.insertMarkdownCellAbove",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "m b",
+        "command": "notebook.cell.insertMarkdownCellBelow",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
 ]
