@@ -4,8 +4,6 @@
 let $LANG='ja_JP.UTF-8'
 scriptencoding utf-8
 
-" 改行コードの自動認識
-
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fileformats=unix,dos,mac
 
@@ -65,6 +63,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-commentary'
 NeoBundle 'vim-ctrlspace/vim-ctrlspace'
 NeoBundle 'inkarkat/vim-mark'
 NeoBundle 'inkarkat/vim-ingo-library'
@@ -464,7 +463,7 @@ inoremap <C-t> <Esc><Left>"zx"zpa
 
 " not yank in x, or s
 nnoremap x "_x
-nnoremap s "_s
+""nnoremap s "_s
 
 ""
 " ------ Tab completion  ------
@@ -498,6 +497,7 @@ set complete=.,b,u,t,w,]
 set complete+=k~/.vim/keywords.txt
 set dictionary=k~/.vim/dict/words
 
+set completeopt=menuone
 "
 " ------ Tab completion  ------
 "
@@ -678,8 +678,6 @@ nnoremap wL <C-w>L
 nnoremap wH <C-w>H
 nnoremap wT <C-w>T
 "nnoremap s <Nop>
-nnoremap sn gt
-nnoremap sp gT
 nnoremap w= <C-w>=
 "nnoremap ww <C-w>w
 nnoremap wr <C-w>r
@@ -687,11 +685,9 @@ nnoremap wx <C-w>x
 nnoremap wo <C-w>_<C-w>|
 nnoremap wO <C-w>=
 nnoremap wt :TagbarToggle<CR>
-nnoremap st :tabnew<CR>
-nnoremap sq :close<CR>
-nnoremap sQ :%bd<CR>
-nnoremap sh :sp<CR>
-nnoremap sv :vsp<CR>
+nnoremap gn :tabnew<CR>
+nnoremap gq :close<CR>
+nnoremap gQ :%bd<CR>
 
 
 " auto select function
@@ -1046,8 +1042,6 @@ function! s:unite_my_settings()
 	inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 endfunction
 
-" Added for memod ETM analysis
-nnoremap <silent> <Leader>pl O..................<ESC>
 
 
 " ------------------------------------
@@ -1088,6 +1082,7 @@ let g:quickhl_manual_keywords = [
 " ------------------------------------
 if has("win32") || has("x86_64")
     let g:gitgutter_git_executable = 'D:\Program Files\Git\bin\git.exe'
+    let g:gitgutter_git_executable = 'C:\Program Files\Git\bin\git.exe'
 elseif has("unix")
     let g:gitgutter_git_executable = '/usr/bin/git'
 endif
