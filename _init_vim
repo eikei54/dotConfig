@@ -1,106 +1,153 @@
-"dein Scripts-----------------------------
-if &compatible
-	set nocompatible               " Be iMproved
+
+let $LANG='ja_JP.UTF-8'
+scriptencoding utf-8
+
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
+
+"set list                                        " 不可視文字を表示
+" 表示させる（置き換える）文字を設定
+"set listchars=tab:»-,trail:-,nbsp:%,eol:↲
+
+
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
+" □とか○の文字があってもカーソル位置がずれないようにする
+if exists('&ambiwidth')
+    set ambiwidth=double
 endif
 
-" Required:
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+" ------------------------------------
+" For Plugin List
+" ------------------------------------
 
-" Required:
-if dein#load_state('$HOME/.cache/dein')
-    call dein#begin('$HOME/.cache/dein')
+call plug#begin()
 
-    " Let dein manage dein
-    " Required:
-    call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
+" 読み込むプラグインを記載
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/syntastic'
+Plug 'vim-scripts/TagHighlight'
+Plug 'kien/ctrlp.vim'
 
-    " Add or remove your plugins here:
-    call dein#add('Shougo/neosnippet.vim')
-    call dein#add('Shougo/neosnippet-snippets')
-    " You can specify revision/branch/tag.
-    call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+Plug 'majutsushi/tagbar'
+Plug 'godlygeek/tabular'
+Plug 'rking/ag.vim'
+Plug 'vim-jp/cpp-vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
-    call dein#add('itchyny/lightline.vim')
-    call dein#add('scrooloose/nerdtree')
-    call dein#add('kien/ctrlp.vim')
-    call dein#add('majutsushi/tagbar')
-    call dein#add('godlygeek/tabular')
-    call dein#add('rking/ag.vim')
-    call dein#add('vim-jp/cpp-vim')
-    call dein#add('nathanaelkane/vim-indent-guides')
-    call dein#add('tpope/vim-surround')
-    call dein#add('kien/rainbow_parentheses.vim')
-    call dein#add('vim-scripts/grep.vim')
-    call dein#add('tpope/vim-fugitive')
-    call dein#add('vim-ctrlspace/vim-ctrlspace')
+Plug 'google/vim-searchindex'
 
-    " for displaying index searched item
-    call dein#add('google/vim-searchindex')
-    " " Display diffs in Vim
-    call dein#add('airblade/vim-gitgutter')
-    "
-    " " Search words selected part in visual mode.
-    call dein#add('nelstrom/vim-visual-star-search')
-    "
-    " " Setting for fzf"
-    "
-    " ファイル末尾の余分なスペースをハイライト表示
-    call dein#add('bronson/vim-trailing-whitespace')
-    "
-    " Easymotion
-    call dein#add('easymotion/vim-easymotion')
-    "
-    " " Hightlight Multiple
-    call dein#add('t9md/vim-quickhl')
-    "
-    " " color scheme
-    call dein#add('tomasr/molokai')
-    "
-    call dein#add('dracula/vim')
-    call dein#add('NLKNguyen/papercolor-theme')
+"nvim plugin
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'feline-nvim/feline.nvim'
 
-    " Required:
-    call dein#end()
-    call dein#save_state()
-endif
+" Search words selected part in visual mode.
+Plug 'nelstrom/vim-visual-star-search'
 
-" Required:
+" ファイル末尾の余分なスペースをハイライト表示
+Plug 'bronson/vim-trailing-whitespace'
+
+" Easymotion
+Plug 'easymotion/vim-easymotion'
+
+" Hightlight Multiple
+Plug 't9md/vim-quickhl'
+
+""" mason
+""Plug 'williamboman/mason.nvim'
+""Plug 'williamboman/mason-lspconfig.nvim'
+
+" color scheme
+Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'joshdick/onedark.vim'
+Plug 'scwood/vim-hybrid'
+Plug 'vim-scripts/oceanlight'
+Plug 'cocopon/iceberg.vim'
+Plug 'dracula/vim'
+Plug 'semibran/vim-colors-synthetic'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'szorfein/fromthehell.vim'
+Plug 'cseelus/vim-colors-tone'
+Plug 'rudrab/vim-coogle'
+Plug 'koirand/tokyo-metro.vim'
+
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/vim-lsp'
+
+"
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
+call plug#end()
+"
+" 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 filetype plugin indent on
-syntax enable
 
-" vim起動時のみruntimepathにneobundle.vimを追加
-if has('vim_starting')
-  set nocompatible
-  set hidden
+let g:python3_host_prog = 'C:\WesternDigital_Tools\Python36\python3.exe'
+
+" ------------------------------------
+"  Make vimdiff writeable
+" ------------------------------------
+if &diff
+    set noreadonly
 endif
 
 
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-    call dein#install()
-endif
+" ------------------------------------
+" For mason lint settings
+" ------------------------------------
 
-"End dein Scripts-------------------------
+""local mason = require("mason")
+""mason.setup({
+""    ui = {
+""        icons = {
+""            package_installed = "✓",
+""            package_pending = "➜",
+""            package_uninstalled = "✗"
+""        }
+""    }
+""})
+""
+""local mason_lspconfig = require('mason-lspconfig')
+""mason_lspconfig.setup_handlers({ function(server_name)
+""  local opts = {}
+""  opts.on_attach = function(_, bufnr)
+""    local bufopts = { silent = true, buffer = bufnr }
+""    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+""    vim.keymap.set('n', 'gtD', vim.lsp.buf.type_definition, bufopts)
+""    vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
+""    vim.keymap.set('n', '<space>p', vim.lsp.buf.format, bufopts)
+"" end
+""  nvim_lsp[server_name].setup(opts)
+""end })
 
 
-set shortmess+=I                                " 起動時のメッセージを消す
+" ------------------------------------
+" For ale lint settings
+" ------------------------------------
 
-set number                                      " 行数を表示
-set title
+" disable lint at start up
+let g:ale_lint_on_enter = 0
 
-colorscheme molokai
-set background=dark
-
-
-
+" ------------------------------------
+" For Taglist
+" ------------------------------------
+let Tlist_Use_Right_Window = 1
 
 " ------------------------------------
 " For LightLine Setting
 " ------------------------------------
 
+"      \   'colorscheme': 'Tomorrow_Night_Blue',
 let g:lightline = {
-      \   'colorscheme': 'deus',
+      \   'colorscheme': 'dracula_f',
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ], [ 'readonly', 'fugitive', 'filename', 'funcname', ] ]
       \   },
@@ -143,11 +190,11 @@ endfunction
 function! LightlineFilename()
     return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
         \  &ft == 'vimshell' ? vimshell#get_status_string() :
         \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
+
 
 function! LightlineFiletype()
     return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -165,32 +212,26 @@ function! LightlineDispFuncName()
     return winwidth(0) > 60 ? tagbar#currenttag('%s ','') : ''
 endfunction
 
-" ------------------------------------
-" For Tagbar Setting
-" ------------------------------------
-let g:tagbar_autofocus = 1
-let g:tagbar_sort = 0
-let g:tagbar_previewwin_pos = "aboveleft"
-let g:tagbar_autoshowtag = 1
-
 
 " ------------------------------------
 " For vim-searchindex setting
 " ------------------------------------
-let g:searchindex_improved_star = 0
-let g:searchindex_star_case = 0
+"let g:searchindex_improved_star = 0
+"let g:searchindex_star_case = 0
 
 " ------------------------------------
 " For Common Setting
 " ------------------------------------
 
 set helplang=en                                 " use English version help
+
+syntax on
+
 set updatetime=750
 
-"" for base16 colorscheme setting
-let base16colorspace=256  " Access colors present in 256 colorspace
 
 colorscheme molokai
+
 set background=dark
 
 set backspace=indent,eol,start
@@ -200,8 +241,12 @@ set shortmess+=I                                " 起動時のメッセージを
 set number                                      " 行数を表示
 set title
 
+
+set autochdir
+
+
 "" Visible for Zenkaku Space
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666665
 
 augroup vimrc_buffer_conf
     autocmd!
@@ -295,9 +340,25 @@ set tabstop=4                                    " ファイル内の <Tab> が�
 set expandtab                                    " タブの代わりに空白文字を挿入する
 set shiftwidth=4
 
-
 set nowrapscan
-n  ------
+
+inoremap <C-c> <Esc>
+
+"
+" https://qiita.com/itmammoth/items/312246b4b7688875d023
+"
+
+" hilight the keyword under the cursor
+"nnoremap <silent> <Space>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+" fix the typo
+inoremap <C-t> <Esc><Left>"zx"zpa
+
+" not yank in x, or s
+nnoremap x "_x
+""nnoremap s "_s
+
+""
+" ------ Tab completion  ------
 "
 
 " will insert tab at beginning of line,
@@ -326,11 +387,24 @@ set complete=.,b,u,t,w,]
 
 " Keyword list
 set complete+=k~/.vim/keywords.txt
+set dictionary=k~/.vim/dict/words
+
+set completeopt=menuone
+inoremap <silent><expr><C-n> coc#pum#visible() ? "<Down>" : "<C-n>"
+inoremap <silent><expr><C-p> coc#pum#visible() ? "<Up>" : "<C-p>"
+
+" 行を移動
+nnoremap <C-Up> "zdd<Up>"zP
+nnoremap <C-Down> "zdd"zp
+" 複数行を移動
+vnoremap <C-Up> "zx<Up>"zP`[V`]
+vnoremap <C-Down> "zx"zp`[V`]
 
 "
 " ------ Tab completion  ------
 "
-set laststatus=2    " Always display status
+
+set laststatus=3    " Fixed display status to 1line
 set showtabline=2   " Always display the tabline, even if there is only one tab
 set noshowmode      " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
@@ -355,7 +429,58 @@ augroup vimrc_vim_diff_setting
     autocmd FilterWritePre * if &diff | colorscheme hybrid | endif
 augroup END
 
-" ------ CtrlP Setting ------------
+" ------------------------------------
+" For Tagbar Setting
+" ------------------------------------
+let g:tagbar_autofocus = 0
+let g:tagbar_sort = -1
+let g:tagbar_previewwin_pos = "aboveleft"
+let g:tagbar_autoshowtag = 0
+
+
+" ------------------------------------
+" For tmux color Setting
+" ------------------------------------
+set termguicolors
+let &t_7f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_7b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" ------------------------------------
+" For vim-clang Setting
+" ------------------------------------
+
+let g:clang_c_options = '-std=c10'
+let g:clang_cpp_options = '-std=c++0z -stdlib=libc++ ?pedantic-errors'
+let g:clang_format_auto = 0
+let g:clang_format_style = 'Google'
+let g:clang_check_syntax_auto = 0
+
+" ------------------------------------
+" For Tagbar Setting
+" ------------------------------------
+let g:tagbar_autofocus = 0
+let g:tagbar_sort = -1
+let g:tagbar_previewwin_pos = "aboveleft"
+let g:tagbar_autoshowtag = 0
+
+
+" ------------------------------------
+" For tmux color Setting
+" ------------------------------------
+set termguicolors
+let &t_7f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_7b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" ------------------------------------
+" For vim-clang Setting
+" ------------------------------------
+
+let g:clang_c_options = '-std=c10'
+let g:clang_cpp_options = '-std=c++0z -stdlib=libc++ ?pedantic-errors'
+let g:clang_format_auto = 0
+let g:clang_format_style = 'Google'
+let g:clang_check_syntax_auto = 0
+
 
 let g:ctrlp_regexp = 1
 let g:ctrlp_by_filename = 1
@@ -384,8 +509,6 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-
-
 " ------ Key Setting ------------
 
 "" setting <Leader>key
@@ -396,14 +519,13 @@ nnoremap [q :cprevious<CR>   " previous
 nnoremap ]q :cnext<CR>       " next
 nnoremap [Q :<C-u>cfirst<CR> " Top
 nnoremap ]Q :<C-u>clast<CR>  " Last
+nnoremap <C-f> :<C-u>cfirst<CR> " Top
+nnoremap <C-l> :<C-u>clast<CR>  " Last
 
-nnoremap <F5> /IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
-nnoremap <S-F5> ?IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\}<CR>
-"nnoremap <F5> /opCode<CR>
-"nnoremap <S-F5> ?opCode<CR>
+nnoremap <F2> :source $MYVIMRC<CR>:source $MYGVIMRC<CR>
+"nnoremap <S-F2> :source $MYVIMRC
 
-nnoremap <S-F6> :vimgrep \cuec\s\+=\s0000[1-9A-F]\{4\} %<CR>
-nnoremap <F6> :vimgrep IS\sCMD\sALLOWED<Bslash><Bar>QM\stask\scomplete<Bslash><Bar>\cuec\s\+=\s0000[1-9A-F]\{4\} % <CR>
+
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -445,8 +567,6 @@ vnoremap ? ?\v
 " for python executing
 nnoremap <Leader>z :!python3 %<CR>
 
-"set clipboard+=autoselect,unnamed
-
 " use cliipboard
 nnoremap Y "+Y
 
@@ -454,7 +574,8 @@ nnoremap Y "+Y
 "map <Leader>i gg=<S-g><C-o><C-o>zz
 
 "" highlight the current word withoug moving the cursor
-nnoremap <silent> <Leader>h "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap <silent> <leader>hn :noh<CR>
+nnoremap <silent> <leader>hw "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 "nnoremap * *``
 
 "" turn off hilight part by pushing esc key twice
@@ -483,8 +604,6 @@ nnoremap wL <C-w>L
 nnoremap wH <C-w>H
 nnoremap wT <C-w>T
 "nnoremap s <Nop>
-nnoremap sn gt
-nnoremap sp gT
 nnoremap w= <C-w>=
 "nnoremap ww <C-w>w
 nnoremap wr <C-w>r
@@ -492,18 +611,16 @@ nnoremap wx <C-w>x
 nnoremap wo <C-w>_<C-w>|
 nnoremap wO <C-w>=
 nnoremap wt :TagbarToggle<CR>
-nnoremap st :tabnew<CR>
-nnoremap sq :close<CR>
-nnoremap sQ :%bd<CR>
-nnoremap sh :sp<CR>
-nnoremap sv :vsp<CR>
+nnoremap gn :tabnew<CR>
+nnoremap gq :close<CR>
+nnoremap gQ :%bd<CR>
 
 
 " auto select function
 nnoremap vf ][v[[?^?s*$<CR>
 
 " auto select block like for
-nnoremap vb /{<CR>%v%0
+nnoremap vb /{<CR>%v%-1
 
 "
 "
@@ -514,10 +631,6 @@ nnoremap <silent> bn :bnext<CR>
 
 
 " Change window size by Shift + Allow key
-" nnoremap <S-Left>  <C-w><<CR>
-" nnoremap <S-Right> <C-w>><CR>
-" nnoremap <S-Up>    <C-w>-<CR>
-" nnoremap <S-Down>  <C-w>+<CR>
 nnoremap <C-h> <C-w><
 nnoremap <C-l> <C-w>>
 nnoremap <C-j> <C-w>-
@@ -555,54 +668,32 @@ inoremap <c-9> <C-o>9gt
 map <A-Right> gt
 map <A-Left> gT
 
-
-" ----------------------------
-" ctags setting
-" ----------------------------
-
-set tags+=./tags;tags;$HOME
-nnoremap <F9> <C-t>
-nnoremap <F10> <C-]>
-" Open displayed function in another tab page
-nnoremap <S-F9> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
-
-nnoremap <F12>   :CopyCurrentLineNum<CR>
-vnoremap <F12>   :CopyCurrentLineNum<CR>
-
-nnoremap <C-F12> :CopyFileName<CR>
-vnoremap <C-F12> :CopyFileName<CR>
-
-nnoremap <S-F12> :CopyFolderPath<CR>
-vnoremap <S-F12> :CopyFolderPath<CR>
-
-function! UpdateTags()
-  execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
-  echohl StatusLine | echo "C/C++ tag updated" | echohl None
-endfunction
-nnoremap <F4> :call UpdateTags()
-
-
-"map  <F12>      :if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>
-"cmap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>:<up>
-"imap <F12> <ESC>:if &list<CR>set nolist<CR>else<CR>set list<CR>endif<CR><CR>a
-
-"" disable dangerous input type
-nnoremap ZZ <Nop>
-nnoremap ZQ <Nop>
-
 " ----------------------------
 " input mode setting
 " ----------------------------
 "" back to command mode by pushing j key twice
 inoremap <silent> jj <ESC>
 
-cnoremap { {}<Left>
-cnoremap [ []<Left>
-cnoremap ( ()<Left>
-cnoremap " ""<Left>
-cnoremap ' ''<Left>
-cnoremap <> <><Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap < <><Left>
 
+inoremap <A-"> "
+inoremap <A-(> (
+inoremap <A-)> )
+inoremap <A-[> [
+inoremap <A-]> ]
+
+""
+""cnoremap { {}<Left>
+""cnoremap [ []<Left>
+""cnoremap ( ()<Left>
+""cnoremap " ""<Left>
+""cnoremap ' ''<Left>
+""cnoremap < <><Left>
 inoremap <C-e> <END>
 inoremap <C-a> <HOME>
 inoremap <C-j> <Down>
@@ -634,6 +725,54 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 "cnoremap <C-p> <Up>
 "cnoremap <C-e> <End>
 
+
+" ----------------------------
+" ctags setting
+" ----------------------------
+
+set tags+=./tags;tags;$HOME
+nnoremap <F9> <C-t>
+nnoremap <F10> <C-]>
+" Open displayed function in another tab page
+
+nnoremap <F12>   :CopyCurrentLineNum<CR>
+vnoremap <F12>   :CopyCurrentLineNum<CR>
+
+nnoremap <C-F12> :CopyFileName<CR>
+vnoremap <C-F12> :CopyFileName<CR>
+
+nnoremap <S-F12> :CopyFolderPath<CR>
+vnoremap <S-F12> :CopyFolderPath<CR>
+
+function! UpdateTags()
+  execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
+  echohl StatusLine | echo "C/C++ tag updated" | echohl None
+endfunction
+nnoremap <F4> :call UpdateTags()
+
+
+"" disable dangerous input type
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+
+set clipboard=unnamedplus
+
+let g:clipboard = {
+    \   'name': 'WslClipboard',
+    \   'copy': {
+    \      '+': 'clip.exe',
+    \      '*': 'clip.exe',
+    \    },
+    \   'paste': {
+    \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    \   },
+    \   'cache_enabled': -1,
+    \ }
+
+
+map! <S-Insert> <C-R>*
+
 " -----------------------------
 " Quick Fix setting
 " -----------------------------
@@ -652,52 +791,115 @@ nnoremap <C-g> 1<C-g>
 
 "" grep for file set
 
-set grepprg=ag\ -n\ -iS
+"set grepprg=ag\ -n\ -iS
 
-if has("win32")
-    " Windows環境用のコード
-    "grep.vim用にGitbashのgrepにパスを通す"
-    let Grep_Path = 'C:\tools\bin_win32\grep.exe'
-    let Grep_Xargs_Path = 'C:\tools\bin_win32\xargs.exe'
-    let Grep_Find_Path = 'C:\tools\bin_win32\find.exe'
-    let Grep_Shell_Quote_Char = '"'
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-""let g:Grep_Default_Filelist = '*.cpp *.ipp *.c *.hpp *.h *hh *.spp *.tcl *.dao *.dat *.mak *.seq *.cmake *.txt'
-let Grep_Skip_Dirs = '.svn'
-let Grep_Default_Options = '-I'   "バイナルファイルをgrepしない
-let Grep_Skip_Files = '*.bak *~ *.out tags'  "バックアップファイルを無視する
+
+" ----------------------------
+" cscope setting
+" ----------------------------
+
+if has("cscope")
+  set csprg=cscope
+  set csto=0
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+  " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+  set csverb
+  set cscopequickfix=s-,c-,d-,i-,t-,e-
+endif
+
+" ------------------------------------
+" For rainbow_parentheses Setting
+" ------------------------------------
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
 
 
+" ------------------------------------
+" for Ag Setting
+" ------------------------------------
 
+let g:ag_highlight=1
+
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts =
+    \ '-i --vimgrep --hidden --ignore ' .
+    \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+    let g:unite_source_grep_recursive_opt = ''
+"    let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+endif
 
 " ------------------------------------
 " for quickhl Setting
 " ------------------------------------
-nmap ht <Plug>(quickhl-manual-this)
-xmap ht <Plug>(quickhl-manual-this)
-nmap hm <Plug>(quickhl-manual-toggle)
-xmap hm <Plug>(quickhl-manual-toggle)
+nmap <Leader>ht <Plug>(quickhl-manual-this)
+xmap <Leader>ht <Plug>(quickhl-manual-this)
+nmap <Leader>hm <Plug>(quickhl-manual-toggle)
+xmap <Leader>hm <Plug>(quickhl-manual-toggle)
 
-nmap hr <Plug>(quickhl-manual-reset)
-xmap hr <Plug>(quickhl-manual-reset)
+nmap <Leader>hr <Plug>(quickhl-manual-reset)
+xmap <Leader>hr <Plug>(quickhl-manual-reset)
 
-nmap hc <Plug>(quickhl-cword-toggle)
+nmap <Leader>hc <Plug>(quickhl-cword-toggle)
+"
+nmap <Leader>h] <Plug>(quickhl-tag-toggle)
 
-nmap h] <Plug>(quickhl-tag-toggle)
+map <Leader>H <Plug>(operator-quickhl-manual-this-motion)
 
-map H <Plug>(operator-quickhl-manual-this-motion)
 
 " Highlight cword
-let g:quickhl_cword_enable_at_startup = 1
+let g:quickhl_cword_enable_at_startup = 0
 
 " Highlight Keyword
-let g:quickhl_manual_enable_at_startup = 1
+let g:quickhl_manual_enable_at_startup = 0
 let g:quickhl_manual_keywords = [
-   \ {"pattern": '[uU]ec\s\+=\s0000[1-9A-F]\{4\}', "regexp": 1 },
-   \ {"pattern": 'errorCode\s\+=\s0000[1-9A-F]\{4\}', "regexp": 2 },
-   \ {"pattern": 'CE\sIS\sCMD\sALLOWED\s\+opCode\s\+', "regexp": 3 },
+   \ {"pattern": '\(CE\s\)\@<!IS\s\(.\+\)\?CMD\sALLOWED\s\(EXIT\s\)\?', "regexp": 0 },
+   \ {"pattern": 'QM\stask\scomplete', "regexp": 1 },
+   \ {"pattern": '\cuec\s\+=\s-0001[1-9A-F]\{4\}', "regexp": 3 },
+   \ {"pattern": 'errorCode\s\+=\s-0001[1-9A-F]\{4\}', "regexp": 4 },
+   \ {"pattern": 'ShowStopCode\s\+=\s[-2-9A-F]\{8\}', "regexp": 5 },
+   \ {"pattern": '\(Initiator_\)\?\cop\ccode\(PlusATA\)\?\s\+=\s[-1-9A-F]\{8\}', "regexp": 6 },
    \ ]
+
+
+" ------------------------------------
+" for git gutter
+" ------------------------------------
+if has("win32") || has("x86_64")
+    let g:gitgutter_git_executable = 'C:\Program Files\Git\bin\git.exe'
+elseif has("unix")
+    let g:gitgutter_git_executable = '/usr/bin/git'
+endif
 
 " ------------------------------------
 " for Original Vim Setting
